@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Terms of Service — FlyGD Wingman</title>
-<meta name="description" content="Terms of service for FlyGD Wingman, a free and open-source Windows companion application for OBS Studio distributed under the MIT Licence.">
+<title>Terms of Service - FlyGD Wingman</title>
+<meta name="description" content="Terms of service for FlyGD Wingman, a free and open-source EVE Online wormhole multiboxing toolkit for Windows, released under GPL-3.0-only.">
 <link rel="canonical" href="https://wingman.zoolanders.vip/terms">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -12,8 +12,8 @@
 <meta name="theme-color" content="#0a0d12">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="FlyGD Wingman">
-<meta property="og:title" content="Terms of Service — FlyGD Wingman">
-<meta property="og:description" content="Terms of service for FlyGD Wingman, a free and open-source Windows companion application for OBS Studio.">
+<meta property="og:title" content="Terms of Service - FlyGD Wingman">
+<meta property="og:description" content="The terms that cover the FlyGD Wingman application and this website, including the GPL-3.0-only licence and the third-party services the application connects to.">
 <meta property="og:url" content="https://wingman.zoolanders.vip/terms">
 <meta property="og:image" content="https://wingman.zoolanders.vip/og.png">
 <meta property="og:image:width" content="1200">
@@ -44,7 +44,7 @@
     <div class="legal-head">
       <span class="eyebrow">Legal</span>
       <h1>Terms of Service</h1>
-      <p class="updated">FlyGD Wingman · Last updated 20 August 2026</p>
+      <p class="updated">FlyGD Wingman · Last updated 4 September 2026</p>
     </div>
 
     <nav class="toc" aria-labelledby="toc-h">
@@ -52,11 +52,12 @@
       <ol>
         <li><a href="#acceptance">Acceptance of these terms</a></li>
         <li><a href="#software">What the software is</a></li>
-        <li><a href="#licence">Open-source licence</a></li>
+        <li><a href="#licence">Licence and your software rights</a></li>
         <li><a href="#responsibilities">Your responsibilities</a></li>
-        <li><a href="#third-party">Third-party services</a></li>
+        <li><a href="#credentials">Credentials on your PC</a></li>
+        <li><a href="#third-party">Third-party services and software</a></li>
         <li><a href="#affiliation">No affiliation</a></li>
-        <li><a href="#availability">Availability</a></li>
+        <li><a href="#availability">Availability and forking</a></li>
         <li><a href="#warranty">Disclaimer of warranties</a></li>
         <li><a href="#liability">Limitation of liability</a></li>
         <li><a href="#changes">Changes to these terms</a></li>
@@ -69,73 +70,91 @@
       <h2 id="acceptance">1. Acceptance of these terms</h2>
       <p>These terms apply to the FlyGD Wingman desktop application (“Wingman”, “the software”) and to this website at <b>wingman.zoolanders.vip</b>. By downloading, installing or using the software, or by using this site, you agree to them. If you do not agree, do not install or use the software.</p>
       <p>“We”, “us” and “the maintainers” mean the volunteer contributors who develop and publish the project. There is no company, no incorporated entity and no commercial service behind it.</p>
+      <p>These terms govern the published application and this website. They are not a software licence, and they do not add conditions to the rights the project's licence grants you. Section 3 explains the relationship between the two.</p>
 
       <h2 id="software">2. What the software is</h2>
-      <p>Wingman is a free companion application for OBS Studio that runs on your own Windows PC. It watches your OBS recording folder, lists finished recordings, can combine selected recordings into a single video, and can upload recordings you select to your own YouTube channel. It can also collect EVE Online combat logs covering a selected recording and post them to a Discord webhook you configure.</p>
-      <p>It is a local tool. There is no hosted service, no user account, no server-side processing and no subscription. Nothing in these terms should be read as a promise of a service, because there is no service to provide — only software you run yourself.</p>
-      <p>The software is provided free of charge. We do not charge for it, and we do not accept payment for it.</p>
+      <p>Wingman is a free, open-source EVE Online wormhole multiboxing toolkit that runs on your own Windows PC. It mirrors running EVE clients into preview windows and switches between them, sends the wormhole mapping and rolling keybinds you configure, watches your EVE gamelogs for combat alerts and fleet combat activity, helps you prepare profiles, skills and fittings, and reviews, stitches and uploads the fight footage you select to your own YouTube channel.</p>
+      <p>It is a local tool. There is no FlyGD backend, no hosted service, no user account system and no subscription. Nothing in these terms should be read as a promise of a service, because there is no service to provide, only software you run yourself. The software is provided free of charge, and we do not accept payment for it.</p>
+      <p>The official Wingman build acts on explicit user input. It can mirror and activate EVE clients, send a configured bookmark keybind when the user presses it, read local files, and use authorized ESI operations. It does not make gameplay decisions or operate clients without user input. This description does not limit the rights to run, study, modify, or redistribute the software granted by GPL-3.0-only.</p>
+      <p>Your use of EVE Online itself remains governed by CCP's own agreements and policies, including CCP's rules on third-party tools. Deciding whether a given configuration is acceptable under those rules is between you and CCP.</p>
 
-      <h2 id="licence">3. Open-source licence</h2>
-      <p>FlyGD Wingman is open-source software released under the <b>MIT Licence</b>. The full licence text accompanies the source code in the <a href="https://github.com/elboaf/FlyGD-Wingman">project repository</a>, and that licence governs your rights to use, copy, modify and redistribute the software.</p>
-      <p>Where the MIT Licence and these terms differ on your rights in the software itself, the MIT Licence prevails. These terms cover the conditions of use of the published application and this website; they do not narrow the rights the licence grants you.</p>
-      <p>The software bundles third-party components, including a build of FFmpeg and Python libraries, each under its own licence. Those licences continue to apply to those components.</p>
+      <h2 id="licence">3. Licence and your software rights</h2>
+      <p>FlyGD Wingman is free software released under the <b>GNU General Public License, version 3 only</b> (<a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-only</a>). The full licence text accompanies the source code in the <a href="https://github.com/elboaf/FlyGD-Wingman">project repository</a>, and that licence, not this page, governs your rights to run, study, modify and redistribute the software.</p>
+      <p>Where these terms and GPL-3.0-only differ on your rights in the software itself, <b>the licence prevails</b>. Nothing here is intended to add a restriction on running, studying, modifying or redistributing Wingman, and any provision that would have that effect does not apply to the software licensed under GPL-3.0-only.</p>
+      <p>The released Windows build includes third-party components under their own licences, and those licences continue to apply to those components. They include a build of FFmpeg (GPL v3), an AutoHotkey engine (GPL v2 or later), a statically linked EVE settings codec whose linked Rust crates are MIT or Apache-2.0 licensed, one of them additionally under Unicode-3.0, the Inter and JetBrains Mono fonts (SIL Open Font License 1.1), and alert sounds (CC BY 4.0). The project's <a href="https://github.com/elboaf/FlyGD-Wingman/blob/main/THIRD-PARTY-NOTICES.md">third-party notices</a> list versions, sources and licence texts.</p>
 
       <h2 id="responsibilities">4. Your responsibilities</h2>
       <p>You are responsible for how you use the software. In particular:</p>
       <ul>
-        <li><b>Your content.</b> You are responsible for the recordings you upload and for having the rights to publish them — including any game footage, music, voice chat or other people's likenesses they contain. Uploads must comply with YouTube's Terms of Service and Community Guidelines and with applicable law.</li>
-        <li><b>Your account.</b> You are responsible for the Google Account you connect and for the videos that appear on your channel as a result of using the software.</li>
-        <li><b>Deletion is permanent.</b> The software includes a function that permanently deletes selected recordings from your disk after a confirmation prompt. It does not use the Recycle Bin and cannot be undone. Keep your own backups of anything you care about.</li>
-        <li><b>Your credentials.</b> Google OAuth tokens and any Discord webhook URL you configure are stored unencrypted on your PC. Keeping your computer and your user account secure is your responsibility. See the <a href="/privacy#security">Privacy Policy</a> for details.</li>
+        <li><b>Your content.</b> You are responsible for the recordings you upload and for having the rights to publish them, including any game footage, music, voice chat or other people's likenesses they contain. Uploads must comply with YouTube's Terms of Service and Community Guidelines and with applicable law.</li>
+        <li><b>Your accounts.</b> You are responsible for the Google Account you connect, for the videos that appear on your channel as a result of using the software, and for the EVE characters you authorize and the fittings you copy to them.</li>
+        <li><b>Deletion is permanent.</b> The software can permanently delete selected recordings from your disk after a confirmation prompt. It does not use the Recycle Bin and cannot be undone. Keep your own backups of anything you care about.</li>
+        <li><b>Your EVE settings.</b> Profiles copies one character's or account's EVE settings onto others. Wingman takes a backup first and restore is available, but you are responsible for choosing the source and the targets.</li>
         <li><b>Your Discord webhook.</b> If you use the combat-log feature, you are responsible for the Discord server and channel you post to and for the log contents you send there.</li>
-        <li><b>No automated uploading.</b> Wingman is designed so that every upload is one you selected and started. You must not script, automate or otherwise trigger uploads without a person choosing them, and you must not modify or drive the application to do so.</li>
-        <li><b>Shared quota.</b> The application's uploads draw on a single YouTube API quota shared by everyone using it. Please do not deliberately exhaust it, and be aware that an upload can fail because other users have consumed the day's quota rather than because of anything you did.</li>
-        <li><b>Lawful use.</b> Do not use the software to upload unlawful material, to infringe copyright, to harass anyone, or to circumvent the terms or technical limits of any third-party service.</li>
+        <li><b>Shared upload capacity.</b> The application's uploads draw on a single YouTube Data API quota granted to the project and shared by everyone using the official build. Please do not deliberately exhaust it, and be aware that an upload can fail because that shared quota, or your own channel's separate YouTube upload limit, has been reached rather than because of anything the software did wrong.</li>
+        <li><b>Lawful use.</b> Do not use the software to upload unlawful material, to infringe copyright, or to harass anyone.</li>
+        <li><b>Other services' terms.</b> When you use the software with Google, YouTube, CCP, Discord, GitHub, Microsoft or OBS Studio, you are also bound by each of those providers' own terms. Complying with them is your responsibility.</li>
       </ul>
+      <p>These are conditions of use of the published application and this website. They do not restrict what you may do with the source code under GPL-3.0-only.</p>
 
-      <h2 id="third-party">5. Third-party services</h2>
+      <h2 id="credentials">5. Credentials on your PC</h2>
+      <p>Wingman stores the credentials you give it on your own computer, and the protection differs by credential. Keeping your PC and your Windows account secure is your responsibility.</p>
+      <ul>
+        <li><b>Google OAuth tokens and any Discord webhook URL are stored in plain text</b> in the application's data folder. They are not encrypted by the application, and Wingman does not use Windows Credential Manager. Anyone who can read your Windows user profile, or who obtains a copy of it, can use them.</li>
+        <li><b>EVE refresh credentials are protected with Windows DPAPI</b> before they are written, scoped to your Windows user account, so a copy taken to another machine or another user account cannot be unwrapped.</li>
+      </ul>
+      <p>A Discord webhook URL is a bearer credential that does not expire; the only way to revoke it is to delete the webhook in Discord. The <a href="/privacy#storage">Privacy Policy</a> describes exactly what is stored where, and <a href="/privacy#revoking">how to revoke</a> Google and EVE access.</p>
+
+      <h2 id="third-party">6. Third-party services and software</h2>
       <p>Wingman works alongside services and software operated by other people. Your use of each is governed by that provider's own terms, and we have no control over them.</p>
 
-      <h3>YouTube and Google</h3>
-      <p>Uploading uses <b>YouTube API Services</b> through your own Google Account, and by using that feature you agree to be bound by the YouTube Terms of Service. Your use of it is subject to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>, the <a href="https://policies.google.com/terms">Google Terms of Service</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. Google may change, restrict or withdraw API access at any time, which could stop the upload feature working. Google may also enforce quotas that limit how much you can upload. We cannot restore access that Google has restricted, and we are not responsible for actions Google or YouTube take in respect of your account or your videos.</p>
+      <h3>Google and YouTube</h3>
+      <p>Uploading uses <b>YouTube API Services</b> through your own Google Account, and by using that feature you agree to be bound by the YouTube Terms of Service. Your use of it is subject to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>, the <a href="https://policies.google.com/terms">Google Terms of Service</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. Wingman holds a single upload scope and calls a single upload method; it cannot read, edit or delete anything already on your channel. Google may change, restrict or withdraw API access at any time, which could stop the upload feature working, and Google may enforce quotas that limit how much you can upload. We cannot restore access that Google has restricted, and we are not responsible for actions Google or YouTube take in respect of your account or your videos.</p>
 
-      <h3>OBS Studio</h3>
-      <p>Wingman reads OBS Studio's configuration to find your recording folder and watches the files OBS produces. It is not a plugin, does not modify OBS, and is not part of the OBS project. OBS Studio is separate software with its own licence and terms, and you must obtain and use it accordingly.</p>
+      <h3>CCP Games, EVE SSO and ESI</h3>
+      <p>The EVE features read files that EVE Online writes on your own computer, mirror and activate running EVE client windows, and send the keystrokes you configured to the clients you enabled. Skills and Fittings additionally use <b>EVE SSO</b> and <b>ESI</b>, CCP's own authorization and third-party API services, for the characters you authorize. Wingman requests read access to skills, the skill queue and fittings, plus one additive fitting write that runs only when you select fits and target characters and confirm the copy.</p>
+      <p>EVE Online is a product of CCP hf., and your use of the game, of EVE SSO and of ESI is governed by CCP's own agreements, including CCP's developer and third-party application terms. This project uses no EVE Online artwork, assets or intellectual property. Wingman is not endorsed by CCP, and CCP may change or withdraw ESI access at any time.</p>
 
       <h3>Discord</h3>
       <p>The combat-log feature posts to a Discord webhook that you create and configure. Your use of Discord is subject to the <a href="https://discord.com/terms">Discord Terms of Service</a> and <a href="https://discord.com/privacy">Discord Privacy Policy</a>. If you do not configure a webhook, the software never contacts Discord.</p>
 
-      <h3>EVE Online and CCP Games</h3>
-      <p>The combat-log feature reads log files that EVE Online writes on your own computer. EVE Online is a product of CCP hf. and its use is governed by CCP's own agreements. This project uses no EVE Online artwork, assets or intellectual property, and it does not interact with the game client or the game's servers in any way — it only reads text files already saved on your disk.</p>
+      <h3>GitHub</h3>
+      <p>Releases, source and the issue tracker are hosted on GitHub, and the application checks GitHub for release information and downloads installers and the optional plugin from there. Your use of GitHub is subject to <a href="https://docs.github.com/site-policy/github-terms/github-terms-of-service">GitHub's Terms of Service</a>. We do not control GitHub's availability, and a release or the repository could become unreachable for reasons outside our control.</p>
 
-      <h2 id="affiliation">6. No affiliation</h2>
-      <p>FlyGD Wingman is an independent, community-built project. It is not affiliated with, endorsed by, sponsored by, or approved by Google LLC, YouTube, the OBS Project or OBS Studio's developers, Discord Inc., or CCP hf. and EVE Online.</p>
-      <p>All product names, logos, trademarks and registered trademarks mentioned on this site or in the application are the property of their respective owners, and are used only to describe what the software is compatible with. Their use does not imply any endorsement or relationship.</p>
+      <h3>Microsoft WebView2</h3>
+      <p>Wingman's interface runs in the Microsoft Edge <b>WebView2</b> runtime, which is Microsoft software with its own terms. If the runtime is missing at installation time, the installer runs Microsoft's bundled bootstrapper, which downloads it from Microsoft. Without that runtime the application will not start.</p>
 
-      <h2 id="availability">7. Availability</h2>
+      <h3>OBS Studio and the optional FightRecorder plugin</h3>
+      <p>Wingman reads OBS Studio's configuration to find your recording folder and watches the files OBS produces. It is not part of the OBS project, and OBS Studio is separate software with its own licence and terms that you must obtain and use accordingly.</p>
+      <p><b>FightRecorder</b> is an optional OBS plugin published from a separate repository. Wingman can check for it, install it and update it when you ask, which places the plugin file in OBS Studio's plugin folder and may prompt for one Windows elevation. It is separate software under its own licence and terms, and installing it is your choice.</p>
+
+      <h2 id="affiliation">7. No affiliation</h2>
+      <p>FlyGD Wingman is an independent, community-built project. It is not affiliated with, endorsed by, sponsored by, or approved by Google LLC, YouTube, the OBS Project or OBS Studio's developers, Discord Inc., GitHub, Inc., Microsoft Corporation, or CCP hf. and EVE Online.</p>
+      <p>EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. All other product names, logos, trademarks and registered trademarks mentioned on this site or in the application are the property of their respective owners, and are used only to describe what the software is compatible with. Their use does not imply any endorsement or relationship.</p>
+
+      <h2 id="availability">8. Availability and forking</h2>
       <p>The software is offered as-is, when it is offered at all. We do not guarantee that the application, this website, the download links, or any feature within them will remain available, or that development will continue.</p>
-      <p>Specifically, and without any obligation to give notice, we may: stop developing or publishing the project; remove or replace releases; change or remove features; or discontinue the site. Features that depend on third-party services — YouTube uploading above all — may stop working for reasons outside our control, including changes to Google's APIs, policies or quotas, or the withdrawal of the project's API access.</p>
-      <p>Because the project is open source, you always retain the option to keep using a copy you already have, or to fork and maintain the source yourself under the MIT Licence.</p>
+      <p>Specifically, and without any obligation to give notice, we may: stop developing or publishing the project; remove or replace releases; change or remove features; or discontinue the site. Features that depend on third-party services, YouTube uploading and the EVE Skills and Fittings tools above all, may stop working for reasons outside our control, including changes to Google's or CCP's APIs, policies or quotas, or the withdrawal of the project's API access.</p>
+      <p>Because the project is free software, you always retain the option to keep using a copy you already have, or to fork, modify and maintain the source yourself under <b>GPL-3.0-only</b>. A fork is your own software: it is not the official build, we do not support it, and the descriptions of the official build's behaviour on this site do not describe it.</p>
       <p>There is no service-level commitment, no uptime guarantee, and no obligation to provide support, bug fixes or updates.</p>
 
-      <h2 id="warranty">8. Disclaimer of warranties</h2>
-      <p>The software and this website are provided <b>“as is” and “as available”, without warranty of any kind</b>, express or implied. To the maximum extent permitted by law, we disclaim all warranties, including any implied warranties of merchantability, fitness for a particular purpose, title and non-infringement.</p>
-      <p>We do not warrant that the software will be uninterrupted, error-free or secure; that it will work with any particular version of Windows, OBS Studio or EVE Online; that uploads will succeed or complete; that stitched or uploaded video will be free of defects; or that it will not, through fault or misuse, result in the loss of files. You use it at your own risk, and you should keep backups of recordings that matter to you.</p>
+      <h2 id="warranty">9. Disclaimer of warranties</h2>
+      <p>The software and this website are provided <b>“as is” and “as available”, without warranty of any kind</b>, express or implied. To the maximum extent permitted by law, and consistent with the warranty disclaimer in GPL-3.0-only, we disclaim all warranties, including any implied warranties of merchantability, fitness for a particular purpose, title and non-infringement.</p>
+      <p>We do not warrant that the software will be uninterrupted, error-free or secure; that it will work with any particular version of Windows, OBS Studio or EVE Online; that previews, keybinds, alerts, profile copies, skill data or fitting copies will be accurate or complete; that uploads will succeed or complete; that stitched or uploaded video will be free of defects; or that it will not, through fault or misuse, result in the loss of files or settings. You use it at your own risk, and you should keep backups of recordings and settings that matter to you.</p>
       <p>Some jurisdictions do not allow the exclusion of certain warranties, so parts of this section may not apply to you; nothing here is intended to exclude rights that cannot lawfully be excluded, including any statutory consumer rights you may have.</p>
 
-      <h2 id="liability">9. Limitation of liability</h2>
-      <p>To the maximum extent permitted by law, the maintainers and contributors shall not be liable for any indirect, incidental, special, consequential, exemplary or punitive damages, or for any loss of data, recordings, profits, revenue, goodwill, or the suspension, restriction or termination of any third-party account, arising out of or in connection with the software or this website — whether in contract, tort (including negligence) or otherwise, and even if advised of the possibility of such damage.</p>
-      <p>This is free software given away at no charge. To the extent any liability cannot be excluded, our total aggregate liability to you is limited to the greater of the amount you paid for the software — which is nothing — or the minimum amount permitted by applicable law.</p>
+      <h2 id="liability">10. Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, the maintainers and contributors shall not be liable for any indirect, incidental, special, consequential, exemplary or punitive damages, or for any loss of data, recordings, settings, in-game assets, profits, revenue, goodwill, or the suspension, restriction or termination of any third-party account, arising out of or in connection with the software or this website, whether in contract, tort (including negligence) or otherwise, and even if advised of the possibility of such damage.</p>
+      <p>This is free software given away at no charge. To the extent any liability cannot be excluded, our total aggregate liability to you is limited to the greater of the amount you paid for the software, which is nothing, or the minimum amount permitted by applicable law.</p>
       <p>Nothing in these terms excludes or limits liability for death or personal injury caused by negligence, for fraud or fraudulent misrepresentation, or for any other liability that cannot lawfully be excluded or limited.</p>
 
-      <h2 id="changes">10. Changes to these terms</h2>
-      <p>These terms may be updated from time to time — for example when the software gains a feature that needs covering. The current version is always published here at <b>wingman.zoolanders.vip/terms</b>, with the “last updated” date at the top of the page reflecting the most recent revision.</p>
+      <h2 id="changes">11. Changes to these terms</h2>
+      <p>These terms may be updated from time to time, for example when the software gains a feature that needs covering. The current version is always published here at <b>wingman.zoolanders.vip/terms</b>, with the “last updated” date at the top of the page reflecting the most recent revision.</p>
       <p>Continuing to use the software or this site after an update means you accept the revised terms. If you do not accept them, stop using the software. Because this site is developed in the open, the complete revision history of this document is public in the project repository.</p>
 
-      <h2 id="contact">11. Contact</h2>
-      <p>Questions about these terms, or about the project generally, should be raised on the public issue tracker:</p>
-      <p><a href="https://github.com/elboaf/FlyGD-Wingman/issues"><b>github.com/elboaf/FlyGD-Wingman/issues</b></a></p>
-      <p>This is the project's official contact channel. It is maintained by volunteers, so please be patient and specific.</p>
+      <h2 id="contact">12. Contact</h2>
+      <p>For questions about these terms, and for anything sensitive such as account, privacy or security matters, email <a href="mailto:technical@zoolanders.vip"><b>technical@zoolanders.vip</b></a>.</p>
+      <p>For public bug reports and feature requests, use the project's issue tracker at <a href="https://github.com/elboaf/FlyGD-Wingman/issues"><b>github.com/elboaf/FlyGD-Wingman/issues</b></a>. It is maintained by volunteers, so please be patient and specific.</p>
       <p><a href="/">← Back to the FlyGD Wingman homepage</a> · <a href="/privacy">Read the Privacy Policy</a></p>
 
     </div>
@@ -159,6 +178,7 @@
           <li><a href="/terms">Terms of Service</a></li>
           <li><a href="https://github.com/elboaf/FlyGD-Wingman">GitHub</a></li>
           <li><a href="https://github.com/elboaf/FlyGD-Wingman/issues">Support</a></li>
+          <li><a href="mailto:technical@zoolanders.vip">Contact</a></li>
         </ul>
       </nav>
     </div>
