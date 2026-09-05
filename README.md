@@ -62,8 +62,8 @@ assets, so no consent banner is required.
 public/
   index.html  privacy.html  terms.html  google-oauth.html  404.html
   styles.css              # the entire design system
-  wingman-mark.svg        # original logo mark
-  favicon.svg  favicon.ico  apple-touch-icon.png
+  wingman-mark.png        # 64px brand mark (header/footer), from the app icon
+  favicon.ico  apple-touch-icon.png
   og.png                  # Open Graph card (1200×630)
   media/                  # product screenshots used on the homepage
   robots.txt  sitemap.xml
@@ -86,13 +86,29 @@ a current release build and repeat that conversion with Pillow. There is no
 committed script that automates this end to end, since it only needs to run
 on the rare occasion a screenshot goes stale.
 
-The Open Graph card (`public/og.png`) was produced the same way: a one-off
-Pillow script rendered the Command deck palette and the real
-`wingman-mark.svg` (rasterised with cairosvg) onto a 1200×630 canvas with
-local system fonts (Inter for display type, a monospace system font for the
-domain line). That script is not committed either; regenerating the card
-only requires reproducing a 1200×630 PNG with the current wordmark, category,
-and tagline, checked at both full size and thumbnail size for legibility.
+### Icons and the Open Graph card
+
+Every brand asset is derived from the icon the v5 application actually ships,
+`wingman/assets/app.ico` in
+[elboaf/FlyGD-Wingman](https://github.com/elboaf/FlyGD-Wingman) (a 7-frame ICO,
+16–256px). `public/favicon.ico` is that file byte-for-byte;
+`public/apple-touch-icon.png` (180×180) and `public/wingman-mark.png` (64×64,
+shown at 26px in the header and 22px in the footer) are Pillow LANCZOS
+resizes of its 256px frame, keeping the icon's transparency. There is no SVG
+favicon or SVG mark: the shipped icon is a raster illustration, so an SVG
+derivative could only be an inaccurate redraw of it.
+
+The Open Graph card (`public/og.png`) was produced the same way as the
+screenshots: a one-off Pillow script rendered the Command deck palette
+(`--ground`, `--surface`, `--line`, `--accent`, `--ink`, `--ink-dim`,
+`--ink-faint`, converted from OKLCH to sRGB) with the same 256px icon frame
+scaled to 132px on a 1200×630 canvas, using local system fonts (Inter for
+display type, DejaVu Sans Mono for the domain line). That script is not
+committed; regenerating the card only requires reproducing a 1200×630 PNG
+with the current icon, category, and tagline, checked at both full size and
+thumbnail size for legibility.
+
+Regenerate all four assets whenever the application's icon changes.
 
 ## Local development
 
@@ -134,8 +150,10 @@ node scripts/check-links.mjs --external   # also HEAD-checks outbound links (opt
 
 `check:links` mirrors the production routing rules, so a link that passes
 here resolves on the deployed site. `check:content` guards specific factual
-claims (the GPL-3.0-only licence, the exact OAuth and ESI scopes, stale
-wording that must never reappear) against each page's actual text.
+claims (the GPL-3.0-only licence, the exact OAuth and ESI scopes, the three
+workflow headings, stale wording that must never reappear on any page) against
+each page's actual text, and additionally asserts the `/media/*` cache rule
+and the `frame-ancestors 'none'` directive in `public/_headers`.
 `check:html` runs [html-validate](https://html-validate.org/) with the
 project's `.htmlvalidate.json` config, extending `html-validate:recommended`
 with stricter accessible-name and inline-style rules. All three exit non-zero

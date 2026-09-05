@@ -110,7 +110,7 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 800px) {
-  .hero-grid, .feature-split, .workflow { grid-template-columns: 1fr; }
+  .feature-split, .workflow { grid-template-columns: 1fr; }
 }
 
 /* ---------- header ---------- */
@@ -124,7 +124,7 @@ img { max-width: 100%; }
 
 .brand { display: inline-flex; align-items: center; gap: .5rem; color: var(--ink); text-decoration: none; font-weight: 650; letter-spacing: -0.01em; }
 .brand:hover, .brand:focus-visible { color: var(--ink); }
-.brand svg { display: block; flex: none; }
+.brand img { display: block; flex: none; }
 .brand b { font-weight: 650; white-space: nowrap; }
 
 .site-nav { margin-left: auto; display: flex; gap: clamp(.5rem, 2vw, 1.25rem); flex-wrap: wrap; }
@@ -196,7 +196,7 @@ img { max-width: 100%; }
 /* ---------- workflow bands (Previews / Bookmarks / Uploading) ---------- */
 
 .workflow-number { font-family: var(--mono); font-size: 1.75rem; font-weight: 600; color: var(--accent); line-height: 1; }
-.workflow h2 { font-size: 1.375rem; margin-bottom: .5rem; }
+.workflow h3 { font-size: 1.375rem; margin-bottom: .5rem; }
 .workflow > div p { color: var(--ink-dim); }
 .workflow img {
   margin-top: 1rem; display: block; width: 100%; max-width: 26rem; height: auto;
