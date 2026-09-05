@@ -1,7 +1,7 @@
 /*
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
-  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'
+  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 /styles.css
@@ -17,6 +17,13 @@
   Cache-Control: public, max-age=604800
 
 /favicon.ico
+  Cache-Control: public, max-age=86400
+
+# The brand mark loads in the header and footer of every page.
+/wingman-mark.png
+  Cache-Control: public, max-age=86400
+
+/apple-touch-icon.png
   Cache-Control: public, max-age=86400
 
 # Cloudflare serves these as bare "text/html". Compliant parsers fall back to the
