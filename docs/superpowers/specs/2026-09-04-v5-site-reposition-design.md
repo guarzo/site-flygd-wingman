@@ -4,7 +4,7 @@
 
 Reposition `wingman.zoolanders.vip` around FlyGD Wingman v5: an EVE Online wormhole multiboxing toolkit that also uploads fight footage. Correct the homepage, OAuth page, privacy policy, terms, metadata, and project documentation so they match the tagged v5.0.0 application.
 
-The site remains a static Cloudflare Workers Assets project with hand-written HTML and CSS, no build step, no runtime JavaScript, no analytics, and no third-party frontend assets.
+The site remains a static Cloudflare Workers Assets project with hand-written HTML and CSS, no build step, no runtime JavaScript, no client-side analytics, and no third-party frontend assets. The Privacy Policy must separately disclose request processing by Cloudflare as the hosting provider and explain the effect of the enabled Workers observability configuration rather than treating infrastructure logging as product analytics.
 
 ## Source of truth
 
@@ -136,6 +136,16 @@ Use the approved **Command deck** direction recorded in `DESIGN.md`:
 - system fonts and no external requests;
 - CSS-only feedback with reduced-motion support.
 
+The approved screenshot source is `/mnt/c/dev/flygd-wingman/tmp/screens/20260905T034121Z`. Its manifest records product SHA `3e8611c` and 33 successful captures. Prefer a small, purposeful set from:
+
+- `01-uploader.png` for fight footage;
+- `07-settings-bookmarks.png` for bookmark keybinds;
+- `08-settings-previews.png` or `10-settings-previews-table.png` for previews;
+- `16-settings-alerts.png` for client awareness;
+- `19-profiles.png`, `22-skills.png`, and `23-fittings.png` for fleet preparation.
+
+Inspect each selected source image against the tagged application before copying it into `public/`. Crop and optimize committed derivatives for the layout; do not ship all 33 captures or reference files outside the site repository at runtime.
+
 Update the Open Graph image if its uploader-first wording or old palette no longer matches the page. Preserve existing icon formats unless the product logo source shows that they are stale.
 
 ## Privacy Policy changes
@@ -147,6 +157,9 @@ Rewrite the policy around v5 data handling.
 - Scope remains `https://www.googleapis.com/auth/youtube.upload` only.
 - Google token remains plaintext JSON under `%LOCALAPPDATA%\FlyGD Wingman\token.json` for a normal v5 installation.
 - Uploads use `videos.insert` only after explicit selection and upload action.
+- Wingman stores the last uploaded channel ID and channel title in settings, and stores recording-path to YouTube-URL history in `links.json` so completed links remain available in the recording list.
+- `links.json` is retained locally without automatic pruning. Explain that removing Google access does not delete this local history, and deleting local history does not revoke Google access or remove uploaded videos from YouTube.
+- Include clear instructions for revoking Wingman's Google access and separately deleting local Google tokens, channel metadata, and upload-link history.
 - Remove the unverified-app warning.
 - Explain shared project quota without an exact number.
 
@@ -169,7 +182,7 @@ List relevant stored EVE data at a useful category level:
 - fittings, collections, descriptions, and copy evidence;
 - local profile, preview, bookmark, and EVE-settings backups.
 
-Avoid a brittle exhaustive filename list in prose. Provide the current application data directory and explain that installations which declined migration may continue using the legacy directory.
+Avoid a brittle exhaustive filename list in prose. Provide the current application data directory and explain that migration from `%LOCALAPPDATA%\OBSYouTubeUploader\` is automatic. If the directory rename fails with an operating-system error, Wingman continues using the legacy directory instead; there is no migration consent prompt.
 
 ### Discord, GitHub, local files, and deletion
 
@@ -177,7 +190,8 @@ Avoid a brittle exhaustive filename list in prose. Provide the current applicati
 - Explain automatic post-upload combat-log behavior and the explicit last-hour action.
 - Explain GitHub update checks and explicit downloads.
 - Keep recording deletion warnings and add that Wingman can rename selected recordings.
-- Give current clean-slate instructions for `%LOCALAPPDATA%\FlyGD Wingman\`, while noting the possible legacy `%LOCALAPPDATA%\OBSYouTubeUploader\` migration fallback.
+- Give current clean-slate instructions that first tell the user to exit Wingman, then remove the active `%LOCALAPPDATA%\FlyGD Wingman\` directory. Where automatic migration failed, the active directory may remain `%LOCALAPPDATA%\OBSYouTubeUploader\`; removing both locations is the safe clean-slate instruction when the active location is unknown.
+- Preserve disclosure that Cloudflare may process ordinary web request information, including IP addresses, as the site's hosting provider. Determine and describe what the enabled Workers observability setting records for this assets-only deployment, or disable it before publishing a broader no-logging claim.
 - Direct sensitive requests to `technical@zoolanders.vip`.
 
 ## Terms changes
@@ -185,7 +199,8 @@ Avoid a brittle exhaustive filename list in prose. Provide the current applicati
 - Replace MIT terms with accurate GPL-3.0-only language and link to the repository licence.
 - Describe Wingman as an EVE multiboxing toolkit with fight-footage uploading.
 - Remove the false claim that Wingman never interacts with EVE clients or servers.
-- State the automation boundary: Wingman responds to explicit user input, mirrors/activates clients, reads local files, and uses authorized ESI, but does not automate gameplay.
+- Remove the existing prohibition on scripting, automating, modifying, or driving the application. It imposes an additional use restriction that is incompatible with the rights granted by GPL-3.0-only.
+- State the automation boundary only as a description of the official build: Wingman responds to explicit user input, mirrors/activates clients, reads local files, and uses authorized ESI, but does not automate gameplay. Do not turn that shipped-product description into a contractual restriction on running, studying, modifying, or redistributing GPL software.
 - Add Google/YouTube, CCP EVE SSO/ESI, Discord, GitHub, Microsoft WebView2, OBS, and FightRecorder to relevant third-party provisions.
 - Correct installation and credential-security language.
 - Use the sensitive-support email and public issue tracker for their distinct purposes.
@@ -226,11 +241,12 @@ The README should state that product claims are verified against v5.0.0 and shou
 1. Run `npm run check` for internal links and fragment anchors.
 2. Run `node scripts/check-links.mjs --external` for outbound links.
 3. Run `npm run deploy:dry-run` to validate Workers Assets configuration.
-4. Validate HTML semantics and metadata with available local tooling.
-5. Inspect the homepage, OAuth page, Privacy Policy, Terms, and 404 page at desktop and narrow widths in a browser.
-6. Check keyboard focus, skip navigation, reduced-motion behavior, text contrast, wrapping paths/scopes, and screenshot alternatives.
-7. Search all site text for stale claims: `MIT`, `OBSYouTubeUploader`, `unverified`, `100 uploads`, `only two`, `no update check`, and the old installer name.
-8. Re-audit factual claims against the tagged v5.0.0 repository before completion.
+4. Run `npx html-validate "public/*.html"` with a checked-in minimal configuration if the default rules conflict with intentional static markup; no validation errors may remain.
+5. Start `wrangler dev`, then assert over HTTP that `/` and `/privacy` return 200, `/privacy/` redirects to `/privacy`, and an unknown route returns the custom page with status 404. Also verify the declared security and cache headers on representative HTML and image responses.
+6. Inspect every page in Chromium at 1440×900, 840×625, and 390×844 CSS pixels. At each width, check horizontal overflow, readable hierarchy, image cropping, path/scope wrapping, and persistent access to Privacy Policy and Terms.
+7. Run an automated accessibility pass with Axe or Lighthouse against the local homepage, OAuth page, Privacy Policy, Terms, and 404 page. Then manually verify keyboard order, skip navigation, visible focus, meaningful screenshot alternatives, and the `prefers-reduced-motion: reduce` rendering. Measure text and focus-indicator contrast against WCAG 2.2 AA thresholds.
+8. Search all site text for stale claims: `MIT`, `unverified`, `100 uploads`, `only two`, `no update check`, and the old installer name. `OBSYouTubeUploader` is permitted only in the Privacy Policy's documented legacy migration and clean-slate instructions; treat every other occurrence as stale.
+9. Re-audit factual claims against the tagged v5.0.0 repository before completion, including stored Google-derived metadata, retention, revocation versus deletion, EVE credential protection, network destinations, and GPL rights.
 
 ## Out of scope
 

@@ -66,7 +66,7 @@ Use full borders or background changes with a clear heading or icon. Do not use 
 
 ## Imagery
 
-Use only current screenshots and brand assets from the v5 product repository. Optimize and commit them locally. Alt text should state the visible workflow rather than repeat nearby copy.
+Use only current screenshots and brand assets from the v5 product repository. The approved capture set is `/mnt/c/dev/flygd-wingman/tmp/screens/20260905T034121Z`, whose manifest records product SHA `3e8611c` and 33 successful captures. Select only the few images that clarify the homepage narrative, verify their visible state against v5.0.0, then crop, optimize, and commit local derivatives. Do not load images from the product checkout or GitHub at runtime. Alt text should state the visible workflow rather than repeat nearby copy.
 
 ## Motion
 
