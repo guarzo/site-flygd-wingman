@@ -2,14 +2,21 @@
   "name": "flygd-wingman-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Static website for FlyGD Wingman — wingman.zoolanders.vip",
+  "description": "Static website for FlyGD Wingman: wingman.zoolanders.vip",
+  "engines": {
+    "node": ">=20.11"
+  },
   "scripts": {
     "dev": "wrangler dev",
-    "check": "node scripts/check-links.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:content": "node scripts/check-content.mjs",
+    "check:html": "html-validate \"public/*.html\"",
+    "check": "npm run check:links && npm run check:content && npm run check:html",
     "deploy": "wrangler deploy",
     "deploy:dry-run": "wrangler deploy --dry-run"
   },
   "devDependencies": {
+    "html-validate": "^11.13.0",
     "wrangler": "^4.125.0"
   }
 }
