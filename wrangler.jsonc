@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "flygd-wingman-site",
+  "compatibility_date": "2026-08-01",
+  // Attaching the custom domain here (rather than only in the dashboard) keeps
+  // it in version control: `wrangler deploy` creates the proxied DNS record in
+  // the zoolanders.vip zone and orders the certificate.
+  "routes": [
+    { "pattern": "wingman.zoolanders.vip", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./public",
+    // "/privacy" serves privacy.html; "/privacy/" 301s to "/privacy",
+    // keeping the canonical URLs in <link rel=canonical> the only ones served.
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}

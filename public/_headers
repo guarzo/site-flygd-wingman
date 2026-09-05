@@ -1,0 +1,29 @@
+/*
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
+  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+/styles.css
+  Cache-Control: public, max-age=3600
+
+/og.png
+  Cache-Control: public, max-age=86400
+
+/favicon.ico
+  Cache-Control: public, max-age=86400
+
+# Cloudflare serves these as bare "text/html". Compliant parsers fall back to the
+# document's <meta charset>, but declaring it in the header removes the ambiguity
+# for anything that does not.
+/
+  Content-Type: text/html; charset=utf-8
+
+/privacy
+  Content-Type: text/html; charset=utf-8
+
+/terms
+  Content-Type: text/html; charset=utf-8
+
+/google-oauth
+  Content-Type: text/html; charset=utf-8
