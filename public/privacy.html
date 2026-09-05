@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — FlyGD Wingman</title>
-<meta name="description" content="How FlyGD Wingman handles your data: the single Google OAuth scope it requests, what it does with it, what is stored on your PC, what is never transmitted, and how to revoke access.">
+<title>Privacy Policy - FlyGD Wingman</title>
+<meta name="description" content="How FlyGD Wingman handles your data: the single Google upload scope, the four EVE SSO scopes, what is stored on your PC, where credentials are protected, which servers it contacts, and how to revoke access or delete everything.">
 <link rel="canonical" href="https://wingman.zoolanders.vip/privacy">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -12,8 +12,8 @@
 <meta name="theme-color" content="#0a0d12">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="FlyGD Wingman">
-<meta property="og:title" content="Privacy Policy — FlyGD Wingman">
-<meta property="og:description" content="How FlyGD Wingman handles your data, the single Google OAuth scope it requests, and how to revoke access.">
+<meta property="og:title" content="Privacy Policy - FlyGD Wingman">
+<meta property="og:description" content="What FlyGD Wingman stores on your PC, which servers it contacts, and how to revoke Google or EVE access.">
 <meta property="og:url" content="https://wingman.zoolanders.vip/privacy">
 <meta property="og:image" content="https://wingman.zoolanders.vip/og.png">
 <meta property="og:image:width" content="1200">
@@ -44,29 +44,26 @@
     <div class="legal-head">
       <span class="eyebrow">Legal</span>
       <h1>Privacy Policy</h1>
-      <p class="updated">FlyGD Wingman · Last updated 20 August 2026</p>
+      <p class="updated">FlyGD Wingman · Last updated 4 September 2026</p>
     </div>
 
     <nav class="toc" aria-labelledby="toc-h">
       <h2 id="toc-h">Contents</h2>
       <ol>
         <li><a href="#overview">Overview</a></li>
-        <li><a href="#accesses">Information Wingman accesses</a></li>
-        <li><a href="#google-data">Google and YouTube data</a></li>
-        <li><a href="#oauth">Google OAuth permissions</a></li>
-        <li><a href="#use">How Google user data is used</a></li>
-        <li><a href="#limited-use">Limited Use disclosure</a></li>
-        <li><a href="#local-storage">Local storage</a></li>
-        <li><a href="#transmission">Data transmission</a></li>
-        <li><a href="#sharing">Data sharing</a></li>
-        <li><a href="#discord">Discord integration</a></li>
-        <li><a href="#eve">EVE Online combat logs</a></li>
-        <li><a href="#retention">Data retention</a></li>
-        <li><a href="#revoking">Revoking Google access</a></li>
+        <li><a href="#website">This website and Cloudflare</a></li>
+        <li><a href="#local-access">Local files and application access</a></li>
+        <li><a href="#google">Google and YouTube</a></li>
+        <li><a href="#eve">EVE SSO and ESI</a></li>
+        <li><a href="#discord">Discord and combat logs</a></li>
+        <li><a href="#updates">GitHub and updates</a></li>
+        <li><a href="#storage">Local storage and credential protection</a></li>
+        <li><a href="#transmission">Network destinations and sharing</a></li>
+        <li><a href="#retention">Retention</a></li>
+        <li><a href="#revoking">Revoking connected accounts</a></li>
         <li><a href="#deleting">Deleting local data</a></li>
         <li><a href="#security">Security</a></li>
-        <li><a href="#children">Children's privacy</a></li>
-        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#changes">Changes</a></li>
         <li><a href="#contact">Contact</a></li>
       </ol>
     </nav>
@@ -74,140 +71,190 @@
     <div class="legal-body">
 
       <h2 id="overview">1. Overview</h2>
-      <p>FlyGD Wingman (“Wingman”, “the application”) is a free, open-source companion application for OBS Studio that runs on your own Windows PC. It watches your OBS recording folder, lets you review and combine recordings, and uploads the ones you select to your own YouTube channel. It can also gather EVE Online combat logs and post them to a Discord webhook you configure.</p>
-      <p>This policy describes what the application does with information on your computer and with your Google Account. It is written to describe the application as it actually behaves; where the behaviour has a sharp edge, this policy says so rather than smoothing it over.</p>
-      <p>The most important thing to understand is structural: <b>there is no FlyGD server.</b> The project does not operate a backend service, a database, an API, or a hosted account system. Wingman is software that runs on your machine and talks directly to Google (and, if you set it up, to Discord). The maintainers do not receive your recordings, your Google credentials, your YouTube data or your combat logs, because there is no system in place that could receive them.</p>
-      <p>This website, <b>wingman.zoolanders.vip</b>, is a set of static pages. It sets no cookies, runs no analytics, embeds no third-party scripts or fonts, and does not track visitors. Our hosting provider, Cloudflare, may process standard request information such as IP addresses in order to serve the pages and protect the site.</p>
+      <p>FlyGD Wingman (“Wingman”, “the application”) is a free, open-source EVE Online multiboxing toolkit for wormhole space that also uploads your fight footage to YouTube. It runs on your own Windows PC. It mirrors running EVE clients in preview windows, provides wormhole mapping and rolling keybinds, watches gamelogs for combat alerts, helps with profiles, skills and fittings preparation, and reviews and uploads the recordings you select.</p>
+      <p>This policy describes what the application does with information on your computer and with the accounts you connect to it. It is written to describe the application as it actually behaves; where the behaviour has a sharp edge, this policy says so rather than smoothing it over.</p>
+      <p>The most important thing to understand is structural: <b>there is no FlyGD backend.</b> The project does not operate a server, a database, an API, or a hosted account system for the application. Wingman talks directly to the services you connect it to: Google, CCP, GitHub, and, if you set one up, your own Discord webhook. The maintainers do not receive your recordings, your credentials, your YouTube data, your EVE data, your combat logs, or any usage events, because there is no system in place that could receive them.</p>
 
-      <h2 id="accesses">2. Information FlyGD Wingman accesses</h2>
-      <p>On your computer, the application reads and writes only what it needs:</p>
+      <h2 id="website">2. This website and Cloudflare</h2>
+      <p>This website, <b>wingman.zoolanders.vip</b>, is a set of static pages. It sets no cookies, runs no client-side analytics, embeds no third-party scripts or fonts, and ships no runtime JavaScript. Nothing on these pages tracks you across sites.</p>
+      <p>The site is hosted on Cloudflare. As the hosting provider, <b>Cloudflare processes ordinary web request information, including your IP address, request headers and timing</b>, in order to route, serve and protect the site. That processing is a normal part of hosting and is governed by Cloudflare's own terms and privacy documentation, not by anything this site adds to your browser.</p>
+      <p>Two details are worth stating precisely, because they are easy to overstate in either direction:</p>
       <ul>
-        <li><b>Your OBS recording folder.</b> Wingman lists video files in the folder you configure (or the one it reads from your OBS Studio configuration) and records each file's path, size and modification time so it can tell new recordings from ones it has already seen.</li>
-        <li><b>Your OBS Studio configuration files.</b> Read once, and only to discover where OBS saves recordings, so you don't have to tell it.</li>
-        <li><b>The video files you select.</b> Read when you stitch or upload them.</li>
-        <li><b>Your EVE Online Gamelogs folder</b>, only if you use the combat-log feature. See section 11.</li>
-        <li><b>Its own settings, tokens, cache and log files</b>, described in section 7.</li>
+        <li>Cloudflare documents that a request matching a static asset in this project is served from its asset storage <b>without invoking Worker code</b>. There is no server-side code of ours in the path of a normal page view.</li>
+        <li>The project's configuration enables Workers observability (<code>observability.enabled</code>). That setting governs whether Cloudflare persists logs of Worker invocations for the account's own operational review. It is infrastructure logging, and it <b>does not add analytics, cookies or any script to your browser</b>.</li>
       </ul>
-      <p>Wingman does not scan your disk generally, does not read documents, and does not index anything outside the folders named above.</p>
+      <p>In other words: the pages themselves carry no tracking, while the provider that serves them still sees the requests, as any host would.</p>
 
-      <h2 id="google-data">3. Google and YouTube data</h2>
+      <h2 id="local-access">3. Local files and application access</h2>
+      <p>On your computer, the application reads and writes what its features need:</p>
+      <ul>
+        <li><b>Your OBS recording folder.</b> Wingman lists video files in the folder you configure, or the one it reads from your OBS Studio configuration, and records each file's path, size and modification time so it can tell new recordings from ones it has already seen.</li>
+        <li><b>Your OBS Studio configuration files</b>, read to discover where OBS saves recordings so you do not have to tell it.</li>
+        <li><b>The video files you select</b>, read when you play, rename, stitch or upload them. Wingman can also rename a selected recording on disk, and can permanently delete selected recordings when you confirm a delete; deletion removes the files outright rather than sending them to the Recycle Bin.</li>
+        <li><b>Your EVE Online Gamelogs folder</b>, read for combat alerts, for the fleet combat bar, and for the combat-log posting described in section 6. Your gamelog files are only ever read, never modified, moved or deleted.</li>
+        <li><b>Your EVE Online settings files</b>, when you use Profiles to copy a character's or account's settings onto others, to take a backup first, or to restore one.</li>
+        <li><b>Running EVE client windows</b>, which Wingman mirrors into preview windows, activates when you ask it to, and sends your configured bookmark keystrokes to. Wingman responds to your explicit input; it does not automate gameplay.</li>
+        <li><b>Its own data folder</b>, described in section 8.</li>
+      </ul>
+      <p>Wingman does not scan your disk generally, does not read your documents, and does not index anything outside the folders named above.</p>
+
+      <h2 id="google">4. Google and YouTube</h2>
       <p>FlyGD Wingman uses <b>YouTube API Services</b> to upload videos on your behalf. By using the upload feature you also agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>, and your data is additionally handled in accordance with the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
-      <p>When you connect a Google Account, the only Google user data the application ever holds is:</p>
-      <ul>
-        <li><b>OAuth credentials</b> — the access token and refresh token that Google issues, together with the application's own client identifiers. These are stored on your PC (section 7).</li>
-        <li><b>The response to each upload</b> — principally the YouTube video ID Google returns, which the application turns into the video link shown next to the recording.</li>
-      </ul>
-      <p>That is the complete list. Wingman makes no request that reads your YouTube account data. It does not retrieve your channel name, channel ID, subscriber counts, existing videos, playlists, subscriptions, watch history, comments or analytics. It does not request your name, email address, profile picture or any other Google profile information, because it does not request a scope that would permit it to.</p>
 
-      <h2 id="oauth">4. Google OAuth permissions</h2>
+      <h3>The single scope</h3>
       <p>FlyGD Wingman requests exactly one OAuth scope:</p>
       <code class="scope">https://www.googleapis.com/auth/youtube.upload</code>
-      <p>This is the narrowest scope Google offers that permits uploading a video, and it is the only permission the application asks for. Using it, Wingman calls a single YouTube Data API v3 method — <code>videos.insert</code> — and calls it only when you press an upload button.</p>
-      <p>Sign-in uses Google's standard installed-application OAuth flow. Your browser opens Google's own consent screen; you authenticate with Google directly. The application never sees, asks for, or handles your Google password. The authorisation response is returned to a temporary listener on <code>localhost</code> on your own machine.</p>
-      <p>The Google Cloud project through which the application identifies itself to Google is controlled by the project maintainer, and its OAuth client ID and client secret are compiled into the released Windows build. This is the ordinary way desktop applications are distributed, and it does not grant the maintainer access to your account, your tokens or your videos — the authorisation you grant is between you and Google, and the resulting credentials stay on your PC. One practical consequence is that all users of the application share the project's YouTube API quota, which currently permits 100 uploads per day in total across everyone using it.</p>
-      <p>Google's verification of the application is still in progress. The application is published rather than in testing, so anyone may sign in; until verification completes, Google's consent screen displays a notice that the app is unverified, which you can read and continue past. Verification affects only that notice — it does not change which permission is requested or what the application does with it.</p>
+      <p>This is the narrowest scope Google offers that permits uploading a video, and it is the only permission the application asks for. Using it, Wingman calls a single YouTube Data API v3 method, <code>videos.insert</code>, and calls it only when you press an upload button. The application is <b>verified by Google</b>, so its consent screen is Google's ordinary one.</p>
+      <p>Wingman makes no request that reads your YouTube account data. It does not retrieve your subscriber counts, existing videos, playlists, subscriptions, watch history, comments or analytics, and it does not request your name, email address or profile picture, because it does not hold a scope that would permit it to.</p>
+      <p>Sign-in uses Google's standard installed-application flow. Your browser opens Google's own consent screen, you authenticate with Google directly, and the response returns to a temporary listener on your own machine. The application never sees, asks for, or handles your Google password. The OAuth client the application identifies itself with is compiled into the released Windows build, which is the ordinary way desktop applications ship. One practical consequence is that everyone using the application shares the project's YouTube API quota, so heavy use by others can exhaust it for a time.</p>
 
-      <h2 id="use">5. How Google user data is used</h2>
-      <p>The <code>youtube.upload</code> permission is used for one purpose: to upload video files that you have explicitly selected to the YouTube channel you signed in with, at the moment you ask for it.</p>
-      <p>With each upload, the application sends only:</p>
-      <ul>
-        <li>the video file itself;</li>
-        <li>the title you typed, or “Untitled” if you left it blank. When you upload several files at once without stitching them, the application appends a counter to that title — <code>My title (2/3)</code> — so the resulting videos can be told apart;</li>
-        <li>the description you typed;</li>
-        <li>the YouTube category ID from your settings (Gaming by default);</li>
-        <li>the privacy status from your settings — <code>private</code>, <code>unlisted</code> or <code>public</code>. The application ships defaulting to <code>unlisted</code>.</li>
-      </ul>
-      <p>No tags, thumbnails, location data, playlist assignments or other metadata are sent. Nothing is uploaded automatically: no recording is ever transmitted to YouTube unless you selected it and pressed upload. If no valid credentials exist when you press upload, the Google consent screen opens as part of that action — the upload you initiated is what triggers sign-in.</p>
-      <p>Google user data is never used for advertising, never sold, never used to build a profile of you, never used to train machine-learning models, and never used for any purpose beyond performing the upload you asked for.</p>
+      <h3>What each upload sends</h3>
+      <p>With each upload, the application sends the video file you selected plus the title you typed (or “Untitled” if you left it blank, with a counter such as <code>My title (2/3)</code> appended when several files go up separately), the description you typed, the YouTube category from your settings, and the privacy status from your settings: <code>private</code>, <code>unlisted</code> or <code>public</code>. The application ships defaulting to <code>unlisted</code>. No tags, thumbnails, location data or playlist assignments are sent, and nothing is uploaded unless you selected it and started the upload.</p>
 
-      <h2 id="limited-use">6. Limited Use disclosure</h2>
-      <p>FlyGD Wingman's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
-      <p>In practice this is straightforward for this application, because information received from Google APIs never leaves your computer other than in the request that produced it: it is not transferred to the maintainers, not transferred to any third party, not used for advertising, and not read by any human.</p>
-
-      <h2 id="local-storage">7. Local storage</h2>
-      <p>Everything Wingman stores is stored on your own PC, in the application's per-user data folder. In the current release that folder is:</p>
-      <p><span class="path">%LOCALAPPDATA%\OBSYouTubeUploader\</span></p>
+      <h3>What Google data stays on your PC</h3>
       <dl class="kv">
-        <div><dt>token.json</dt><dd>Your Google OAuth access and refresh tokens, in plain JSON, together with the application's client identifiers.</dd></div>
-        <div><dt>settings.json</dt><dd>Your preferences, in plain JSON: recording folder, YouTube privacy status and category, notification style, EVE Gamelogs folder, and your Discord webhook URL if you set one.</dd></div>
-        <div><dt>seen.json</dt><dd>A record of which recordings have already been announced — file paths, sizes and timestamps only.</dd></div>
-        <div><dt>logs\</dt><dd>A rotating diagnostic log file used for troubleshooting.</dd></div>
-        <div><dt>tmp\</dt><dd>Working files: stitched videos awaiting upload and combat-log archives awaiting posting.</dd></div>
+        <div><dt>token.json</dt><dd>Your Google OAuth access and refresh tokens, stored as plain JSON in the application data folder, together with the application's client identifiers.</dd></div>
+        <div><dt>settings.json</dt><dd>The channel ID and channel title of the last successful upload, learned from the <code>videos.insert</code> response so the application can show you where uploads land and point out when the destination changes.</dd></div>
+        <div><dt>links.json</dt><dd>A local history mapping each uploaded recording's path (with its size and modification time) to the YouTube URL the upload produced, so the Link column still answers “did I already upload this fight?” after a restart.</dd></div>
       </dl>
-      <p><b>These files are not encrypted by the application.</b> They are ordinary files in your Windows user profile, protected only by your operating system's normal file permissions and by whatever disk encryption you have enabled yourself. The application does not use Windows DPAPI, the Windows Credential Manager, or any other credential vault. Please treat <code>token.json</code> and the webhook URL in <code>settings.json</code> as you would treat saved passwords: anyone who can read your user profile — or who obtains a copy of it — can use them.</p>
-      <p>The diagnostic log can contain local file paths, which typically include your Windows username, along with the names of your recordings and log files. Any Discord webhook URL is actively stripped from it by a redaction filter. Your Google tokens are not written to it either — no part of the application logs them, and the logging level is set so that the Google client libraries' own verbose request logging stays off — though unlike the webhook, that is a consequence of how logging is configured rather than a filter that removes them. The log is written for your own troubleshooting and is never uploaded anywhere.</p>
+      <p><b>Nothing prunes <code>links.json</code> automatically.</b> Entries stay until you delete the file or the whole data folder yourself. That is deliberate: the link is the only record the application keeps of an upload, and it cannot be recomputed.</p>
 
-      <h2 id="transmission">8. Data transmission</h2>
-      <p>The application makes network connections to two destinations, and only two:</p>
+      <h3>Limited Use disclosure</h3>
+      <p>FlyGD Wingman's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. In practice, information received from Google APIs never leaves your computer other than in the request that produced it: it is not transferred to the maintainers, not transferred to any third party, not used for advertising, not used to build a profile of you, not used to train machine-learning models, and not read by any human.</p>
+
+      <h3>Three separate actions</h3>
+      <p>Revoking, deleting locally, and deleting on YouTube are three different things, and doing one does not do the others:</p>
       <ul>
-        <li><b>Google</b> — when you sign in, when a token is refreshed, and when you upload. Video data travels directly from your PC to Google's servers over HTTPS.</li>
-        <li><b>Discord</b> — only if you have configured a webhook and only when you press the combat-log button. See section 10.</li>
+        <li><b>Revoking the application's Google access</b> (section 11) invalidates the credentials held on your PC. It does not delete <code>token.json</code>, the stored channel ID and title, or the <code>links.json</code> history from your computer, and it does not remove any video from YouTube.</li>
+        <li><b>Deleting the local files</b> (section 12) removes the stored credentials, channel metadata and upload-link history from your PC. It does not revoke the application's access to your Google Account, and it does not delete uploaded videos.</li>
+        <li><b>Deleting a video on YouTube</b> is done in YouTube Studio, under your own account. It affects neither the local files nor the grant of access.</li>
       </ul>
-      <p>Beyond these, the application makes no outbound connections whatsoever. It contains no analytics, no telemetry, no crash or error reporting, no usage measurement, no licence or activation check, and no automatic update check. There is no FlyGD-operated endpoint of any kind for it to contact.</p>
-      <p>Your Google OAuth tokens are not transmitted to any FlyGD-controlled server, intentionally or otherwise. They are sent only to Google, in the ordinary course of authenticating the API requests you initiate.</p>
 
-      <h2 id="sharing">9. Data sharing</h2>
-      <p>The maintainers of FlyGD Wingman do not receive your data, and therefore do not share, sell, rent, license or disclose it. There is no advertising, no data broker relationship, no affiliate tracking and no analytics vendor.</p>
-      <p>The only parties that receive anything are the ones you chose to involve: Google, when you upload a video to your own channel, and Discord, if you configured a webhook and used the combat-log feature. Data you send to those services is thereafter governed by their own privacy policies — <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and <a href="https://discord.com/privacy">Discord Privacy Policy</a>.</p>
-
-      <h2 id="discord">10. Discord integration</h2>
-      <p>This feature is entirely separate from Google and YouTube. <b>No Google user data, no YouTube data, and no video file is ever sent to Discord.</b></p>
-      <p>The integration is off until you turn it on. In Settings you may paste a Discord webhook URL that you created in your own Discord server. If no webhook is configured, the combat-log button does nothing but tell you so.</p>
-      <p>When you have configured a webhook and press <b>Upload combat logs</b>, the application sends one HTTPS request to that webhook containing:</p>
+      <h2 id="eve">5. EVE SSO and ESI</h2>
+      <p>The EVE features are independent of Google: no Google or YouTube data is used by them, and no EVE data is sent to Google. Authorizing a character is optional, and only the Skills and Fittings features need it.</p>
+      <p>Wingman asks CCP for exactly four ESI scopes:</p>
+      <code class="scope">esi-skills.read_skills.v1</code>
+      <code class="scope">esi-skills.read_skillqueue.v1</code>
+      <code class="scope">esi-fittings.read_fittings.v1</code>
+      <code class="scope">esi-fittings.write_fittings.v1</code>
+      <p>Skills asks only for the two read scopes; Fittings asks only for the two fitting scopes. Authorizing a character for everything the application offers grants the union of the four.</p>
+      <p>Sign-in uses EVE SSO as a <b>public client with PKCE</b>. Your browser opens CCP's own login page, and the authorization response returns to a temporary listener on the loopback address <code>http://127.0.0.1:51779/callback/</code> on your own machine. There is <b>no EVE client secret</b> in the application: the flow's protection comes from PKCE and from your own consent at CCP, not from a secret embedded in a desktop build. Wingman never sees or handles your EVE account password.</p>
+      <p>Through ESI, Wingman reads the trained skills and current training queue of characters you authorized, reads their fittings, and resolves character and type names for display. <b>The only write is an explicit, additive fitting copy:</b> when you select fittings and target characters and confirm the copy, Wingman creates those fits on the target characters. It does not modify or delete fits that are already there, and it makes no other write to your EVE account.</p>
+      <p>Locally, the application stores these categories of EVE data in its own data folder:</p>
       <ul>
-        <li>a ZIP archive of the EVE Online combat logs whose activity overlaps your selected recordings' time span — widened by five minutes at each end, and limited to the 64 most recent matching logs — together with a small manifest describing what is in the archive; and</li>
-        <li>a short summary message stating the time window covered, the number of log files, the EVE Online character names read from those logs, and, if that 64-file limit dropped any, how many were omitted.</li>
+        <li><b>Character identity and authorization metadata:</b> character ID, character name, the owner hash CCP returns, and the scopes each character granted.</li>
+        <li><b>EVE refresh credentials</b>, protected with <b>Windows DPAPI</b> before they are written (see section 8).</li>
+        <li><b>Skill and queue state:</b> skill snapshots, the training queue, character attributes, cached skill name lookups, and per-request cache validators.</li>
+        <li><b>Plans and groups:</b> your skill plan files, plan selections, and the character groups you organise readiness by.</li>
+        <li><b>Fittings and collections:</b> the curated fitting library, per-character fitting snapshots, collection membership, names and descriptions, and the record of which fits were copied where.</li>
+        <li><b>Profile, preview, bookmark and EVE-settings state:</b> your preview and keybind configuration, formation and profile choices, and the EVE settings backups the application takes before a copy or restore.</li>
       </ul>
-      <p>The webhook URL is stored in plain text in <code>settings.json</code>. A Discord webhook URL is a bearer credential: anyone who holds it can post to that channel, it does not expire, and the only way to revoke it is to delete the webhook in Discord. The application accepts only <code>https</code> webhook addresses on Discord's own domains, refuses to follow redirects so an archive cannot be diverted elsewhere, and and keeps the URL out of its log file. The webhook remains visible in the Settings field you pasted it into, so treat that screen as sensitive when sharing a screenshot.</p>
 
-      <h2 id="eve">11. EVE Online combat logs</h2>
-      <p>EVE Online writes plain-text combat logs for each play session into a Gamelogs folder on your PC. If you use the combat-log feature, Wingman locates that folder — either the one you set in Settings or a standard location under your Documents folder — and reads the first few lines of each log file to extract the session start time and the EVE character name the log belongs to.</p>
-      <p>It then selects the logs whose time span overlaps the recordings you selected — allowing five minutes' margin either side, and keeping at most the 64 most recent matches — and archives those into a ZIP file in its own temporary folder. Your original log files are only ever read; they are never modified, moved or deleted.</p>
-      <p>That archive is then posted to your Discord webhook as described in section 10. If the post succeeds the archive is deleted; if it fails, the archive is kept and its location shown so that you can send it manually. Combat logs are never sent to Google or YouTube, and are never sent anywhere at all if you have not configured a webhook and pressed the button.</p>
+      <h2 id="discord">6. Discord and combat logs</h2>
+      <p>This feature is entirely separate from Google and YouTube. <b>No Google user data, no YouTube data and no video file is ever sent to Discord.</b> It is off until you configure it: in Settings you may paste a Discord webhook URL you created in your own server.</p>
+      <p>There are two ways combat logs get posted:</p>
+      <ul>
+        <li><b>After a successful upload.</b> If a webhook is configured and you confirmed the upload with combat logs included, Wingman posts the logs matching that footage once the video upload has succeeded.</li>
+        <li><b>Post the last hour.</b> A separate, explicit button that posts the logs from the hour ending at the click. No video and no Google account are involved.</li>
+      </ul>
+      <p>A post is one HTTPS request to your webhook containing a ZIP archive of the matching EVE combat logs and a small manifest, plus a short summary message stating the time window covered, the number of log files, the EVE character names read from those logs, and how many older files were omitted if the cap applied. Log selection widens the window by five minutes at each end and keeps at most the 64 most recent matching files.</p>
+      <p>The webhook URL is stored <b>in plain text</b> in the application's settings file. A Discord webhook URL is a bearer credential: anyone who holds it can post to that channel, it does not expire, and the only way to revoke it is to delete the webhook in Discord. The application accepts only <code>https</code> webhook addresses on Discord's own domains, refuses to follow redirects so an archive cannot be diverted elsewhere, and strips the URL out of its own log file. The URL remains visible in the Settings field you pasted it into, so treat that screen as sensitive when sharing a screenshot.</p>
 
-      <h2 id="retention">12. Data retention</h2>
+      <h2 id="updates">7. GitHub and updates</h2>
+      <p>Wingman contacts GitHub in two circumstances:</p>
+      <ul>
+        <li><b>One automatic release check per startup.</b> When the application window is ready, it requests the latest Wingman release metadata from GitHub's API to tell you whether a newer version exists. It is a plain read of public release data: no account information, no identifiers of yours, and nothing about your recordings or characters is sent. The request identifies itself with the application name and version, and GitHub sees it as it would any web request, including your IP address.</li>
+        <li><b>Downloads and checks you start.</b> Checking again from the update screen, downloading the Wingman installer, and checking for or installing the optional FightRecorder OBS plugin each contact GitHub only when you ask for them.</li>
+      </ul>
+      <p>Separately, during installation, if the Microsoft Edge WebView2 runtime is absent, the installer runs Microsoft's bundled bootstrapper, which downloads the runtime from Microsoft. That happens at install time only, and only when the runtime is missing.</p>
+
+      <h2 id="storage">8. Local storage and credential protection</h2>
+      <p>Everything Wingman stores is stored on your own PC, in the application's per-user data folder:</p>
+      <p><span class="path">%LOCALAPPDATA%\FlyGD Wingman\</span></p>
+      <p>Earlier releases used <span class="path">%LOCALAPPDATA%\OBSYouTubeUploader\</span>. Migration is automatic and silent: at startup, if the old folder exists and the new one does not, Wingman renames it. There is no prompt and no choice to decline. If the rename fails with an operating-system error, for example because a file is locked, <b>Wingman keeps using the legacy folder for that session</b> and retries the migration at the next launch. That is why the clean-slate instructions in section 12 cover both locations.</p>
+      <p>Rather than list every file, here is what lives there by category:</p>
+      <dl class="kv">
+        <div><dt>Settings</dt><dd><code>settings.json</code>: recording folder, YouTube privacy and category, notification style, Gamelogs folder, last upload channel ID and title, your Discord webhook URL if you set one, and the preview, bookmark, alert and EVE tool sections.</dd></div>
+        <div><dt>Google credentials</dt><dd><code>token.json</code>: access and refresh tokens as plain JSON.</dd></div>
+        <div><dt>Recording records</dt><dd><code>seen.json</code> (which recordings were already announced), <code>durations.json</code> (a cache of probed lengths) and <code>links.json</code> (the upload-link history).</dd></div>
+        <div><dt>EVE authorization</dt><dd><code>eve_authority.json</code>: character identity, granted scopes, and DPAPI-protected refresh credentials.</dd></div>
+        <div><dt>EVE feature state</dt><dd>Skills, queue and group state; fittings, collections and copy records; cached name lookups; your skill plan files; and EVE settings backups taken before a profile copy or restore.</dd></div>
+        <div><dt>Bookmark engine files</dt><dd>The generated configuration, status and process files the bookmark engine reads and writes.</dd></div>
+        <div><dt>Logs and temporary files</dt><dd>A rotating diagnostic log, and working files such as stitched videos awaiting upload and combat-log archives awaiting posting.</dd></div>
+      </dl>
+      <p>Credential protection differs by credential, and the difference matters:</p>
+      <ul>
+        <li><b>EVE refresh credentials are protected with Windows DPAPI</b> before being written, using the Windows data protection API scoped to your Windows user account. A copy of the file taken to another machine or another user account cannot be unwrapped.</li>
+        <li><b>Your Google tokens and your Discord webhook URL are stored as plain JSON that the application does not encrypt.</b> They are ordinary files in your Windows user profile, protected by your operating system's file permissions and by whatever disk encryption you have enabled yourself. Treat them as you would treat saved passwords: anyone who can read your user profile, or who obtains a copy of it, can use them.</li>
+      </ul>
+      <p>The diagnostic log can contain local file paths, which typically include your Windows username, along with the names of your recordings, log files and characters. Any Discord webhook URL is actively stripped from it by a redaction filter attached to the log handler, so even third-party libraries cannot write it through. Google and EVE tokens are not written to it. The log is written for your own troubleshooting and is never uploaded anywhere.</p>
+
+      <h2 id="transmission">9. Network destinations and sharing</h2>
+      <p>The application connects only to the services its features need, and only in the circumstances described above:</p>
+      <dl class="kv">
+        <div><dt>Google</dt><dd>Sign-in, token refresh, and the uploads you start. Video data travels directly from your PC to Google over HTTPS.</dd></div>
+        <div><dt>CCP</dt><dd>EVE SSO authorization at CCP's login service, ESI reads for skills, queues, fittings and names, and explicit additive fitting writes.</dd></div>
+        <div><dt>Discord</dt><dd>Posts to the webhook you configured, and nothing else.</dd></div>
+        <div><dt>GitHub</dt><dd>One release check per startup, plus the checks and downloads you start, including the optional FightRecorder plugin.</dd></div>
+        <div><dt>Microsoft</dt><dd>The WebView2 runtime download during installation, only when that runtime is absent.</dd></div>
+        <div><dt>FlyGD</dt><dd>Nothing. There is no FlyGD backend to receive credentials, videos, EVE data or usage events.</dd></div>
+      </dl>
+      <p>The application contains no usage analytics, no crash or error reporting, no advertising identifiers, and no licence or activation check. The update check described in section 7 is a read of public release metadata, not usage measurement. The combat alerts and the fleet combat bar read your EVE gamelogs continuously while they are enabled, but that processing happens entirely on your PC; nothing from it is transmitted anywhere unless you post combat logs to your own Discord webhook.</p>
+      <p>The maintainers do not receive your data and therefore do not share, sell, rent, license or disclose it. The only parties that receive anything are the ones you chose to involve, and what you send them is thereafter governed by their own policies: <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and <a href="https://discord.com/privacy">Discord Privacy Policy</a>, together with CCP's and GitHub's own published policies. Cloudflare's processing applies to this website, as described in section 2, not to the application.</p>
+
+      <h2 id="retention">10. Retention</h2>
       <p>Because the project holds none of your data, there is nothing for the project to retain and no retention schedule to operate.</p>
-      <p>On your own machine, data persists until you remove it. Your OAuth token file remains until you sign out, revoke access, or delete it. Settings persist until changed. Diagnostic logs rotate automatically, keeping a small, bounded amount of recent history. Temporary stitched videos are deleted once used, and any strays are cleared at startup. Combat-log archives are deleted after a successful post to Discord and kept only if the post failed. Uninstalling the application deliberately leaves this folder in place, so an uninstall and reinstall does not lose your settings; see section 14 to remove it yourself.</p>
-      <p>Videos you upload to YouTube are stored by Google under your own YouTube account and are subject to your control and to Google's retention practices.</p>
+      <p>On your own machine, data persists until you remove it, in the folder described in section 8, or in the legacy folder if an automatic migration was deferred by an operating-system error. Settings, credentials, EVE state, skill plans and the <code>links.json</code> upload history persist indefinitely; nothing prunes the link history. Diagnostic logs rotate automatically, keeping a small, bounded amount of recent history. EVE settings backups accumulate until pruned or removed. Temporary stitched videos are deleted once used, and strays are cleared at startup. Combat-log archives are deleted after a successful post and kept only when a post failed, so that you can send them manually.</p>
+      <p>Uninstalling the application deliberately leaves the data folder in place, so uninstalling and reinstalling does not lose your settings. Section 12 describes how to remove it yourself.</p>
+      <p>Videos you upload to YouTube are stored by Google under your own account, subject to your control and to Google's retention practices. Fittings copied to your EVE characters live on CCP's servers and are managed in game.</p>
 
-      <h2 id="revoking">13. Revoking Google access</h2>
-      <p>You can withdraw the application's access to your Google Account at any time, and you do not need the application in order to do it:</p>
+      <h2 id="revoking">11. Revoking connected accounts</h2>
+      <p>Google and EVE are revoked separately, at the provider, and neither revocation deletes anything from your PC.</p>
+      <h3>Google</h3>
       <ol>
-        <li>Go to your Google Account's third-party access settings, at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> or <a href="https://security.google.com/settings/security/permissions">security.google.com/settings/security/permissions</a>.</li>
+        <li>Open your Google Account's third-party access settings at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
         <li>Find <b>FlyGD Wingman</b> in the list of apps with access to your account. If you granted access before the project was renamed, it may still appear under its original name, OBS YouTube Uploader.</li>
         <li>Select it and choose <b>Remove access</b>.</li>
       </ol>
-      <p>Revoking access immediately invalidates the tokens held on your PC; the next upload attempt will fail with a sign-in error rather than silently continuing. Revoking does not delete the now-useless token file from your computer, so if you want it gone as well, delete it as described below. Revoking has no effect on videos you have already uploaded — those remain on your YouTube channel and under your control.</p>
+      <p>Revoking immediately invalidates the tokens held on your PC; the next upload attempt fails with a sign-in error rather than silently continuing. It has no effect on videos you already uploaded, and it does not remove the token file, the stored channel ID and title, or the <code>links.json</code> history from your computer.</p>
+      <h3>EVE Online</h3>
+      <p>To withdraw a character's authorization at CCP, sign in to EVE Online's account or developer account management and remove FlyGD Wingman from the list of authorized third-party applications. CCP moves those pages from time to time, so use the third-party application access section of your EVE account rather than a bookmarked link.</p>
+      <p>Within Wingman, Settings then Characters lets you remove a character, which deletes that character's stored identity and DPAPI-protected credentials from your PC. Removing a character locally does not withdraw the grant at CCP, and withdrawing the grant at CCP does not remove the local record; do both if you want a clean break. Neither action alters fittings already copied to your characters.</p>
 
-      <h2 id="deleting">14. Deleting locally stored data</h2>
-      <p>To remove your credentials, delete <span class="path">%LOCALAPPDATA%\OBSYouTubeUploader\token.json</span>. The application will ask you to sign in again the next time you upload.</p>
-      <p>To remove everything the application has stored — settings, Discord webhook, seen-file records, logs and temporary files — delete the whole folder:</p>
-      <p><span class="path">%LOCALAPPDATA%\OBSYouTubeUploader\</span></p>
-      <p>Paste that path into File Explorer's address bar to open it. Uninstalling the application does not remove this folder; delete it manually if you want a clean slate. Your recordings live in your OBS output folder and are yours to manage — deleting Wingman's data folder does not touch them.</p>
+      <h2 id="deleting">12. Deleting local data</h2>
+      <p>To remove your Google credentials only, delete <code>token.json</code> from the application data folder. Wingman asks you to sign in again the next time you upload. To remove only the record of which recordings were uploaded and to which URL, delete <code>links.json</code>; the Link column empties and the videos on YouTube are unaffected.</p>
+      <p>For a clean slate:</p>
+      <ol>
+        <li><b>Exit Wingman</b>, including from the tray icon, so nothing rewrites its files while you work.</li>
+        <li><b>Revoke Google and EVE access separately if you want to</b>, as described in section 11. Deleting local files does not revoke either grant.</li>
+        <li><b>Delete</b> <span class="path">%LOCALAPPDATA%\FlyGD Wingman\</span>. Paste that path into File Explorer's address bar to open it.</li>
+        <li><b>If you are not sure which location is active, or migration failed</b>, also delete <span class="path">%LOCALAPPDATA%\OBSYouTubeUploader\</span>. Removing both locations is the safe instruction when the active one is unknown.</li>
+        <li><b>Understand what is not affected.</b> Recordings stored outside those folders remain where they are, videos already uploaded remain on your YouTube channel, fittings already copied remain on your EVE characters, and archives already posted remain in your Discord channel.</li>
+      </ol>
+      <p>Uninstalling the application does not perform any of these steps for you.</p>
 
-      <h2 id="security">15. Security</h2>
+      <h2 id="security">13. Security</h2>
       <p>We would rather describe the actual protections than imply stronger ones.</p>
       <ul>
-        <li>All network communication with Google and Discord uses HTTPS.</li>
-        <li>Your Google password is never seen or handled by the application; authentication happens on Google's own pages.</li>
-        <li>The application requests the narrowest scope that can perform its function, so a compromised token permits uploading to your channel — not reading or deleting your existing content, and not access to anything else in your Google Account.</li>
+        <li>All network communication with Google, CCP, Discord, GitHub and Microsoft uses HTTPS.</li>
+        <li>Your Google and EVE passwords are never seen or handled by the application; authentication happens on the providers' own pages.</li>
+        <li>The Google scope is the narrowest one that can upload, so a compromised Google token permits uploading to your channel, not reading or deleting your existing content, and not access to anything else in your Google Account.</li>
+        <li>The EVE scopes cover skills, the skill queue and fittings only. The single write path creates fittings; it cannot remove them, and it reaches no other part of your EVE account.</li>
+        <li>EVE refresh credentials are wrapped with Windows DPAPI under your Windows user account before they are stored.</li>
+        <li>Google tokens and the Discord webhook URL are stored as plain JSON, so their security rests on your Windows account and on any full-disk encryption you have enabled. If your PC is shared or compromised, treat those credentials as exposed and revoke them as described in section 11.</li>
         <li>The Discord webhook URL is redacted from the diagnostic log, and redirects are refused when posting to it.</li>
-        <li><b>Stored credentials are not encrypted at rest by the application.</b> The token file and settings file are plain JSON in your user profile. Their security rests on your Windows account and on any full-disk encryption you have enabled. If your PC is shared or compromised, treat those files as exposed and revoke access as described in section 13.</li>
-        <li>Released builds are not code-signed, which is why Windows shows a “Windows protected your PC” warning on first run. Downloading only from the project's official GitHub releases page is the way to be sure of what you are installing.</li>
+        <li>The EVE loopback listener accepts the authorization response only on <code>127.0.0.1</code>, and the authorization is bound to the PKCE verifier generated for that attempt.</li>
+        <li>Released builds are not code-signed, which is why Windows may show a “Windows protected your PC” warning on first run. Downloading only from the project's official GitHub releases page is the way to be sure of what you are installing.</li>
       </ul>
-      <p>No software is perfectly secure. If you believe you have found a security problem, please see section 18.</p>
+      <p>No software is perfectly secure. If you believe you have found a security problem, please contact us as described in section 15 rather than filing a public issue.</p>
 
-      <h2 id="children">16. Children's privacy</h2>
-      <p>FlyGD Wingman is a desktop utility intended for adults and is not directed at children. The project operates no service and receives no information about anyone who uses the application, of any age — everything the application reads or stores stays on the user's own computer, as described in sections 2 and 7. There is consequently no collection of children's information for the project to knowingly or unknowingly perform. Note that Google requires account holders to meet a minimum age to use YouTube, and uploading to YouTube is subject to Google's own terms and age requirements.</p>
-
-      <h2 id="changes">17. Changes to this policy</h2>
-      <p>This policy may be updated as the application changes — for example if a feature is added that touches data in a new way. When it is, the “last updated” date at the top of this page will change, and the current version will always be published here at <b>wingman.zoolanders.vip/privacy</b>. Material changes affecting how Google user data is handled will also be noted in the release notes for the version that introduces them.</p>
+      <h2 id="changes">14. Changes</h2>
+      <p>This policy may be updated as the application changes, for example if a feature is added that touches data in a new way. When it is, the “last updated” date at the top of this page will change, and the current version will always be published here at <b>wingman.zoolanders.vip/privacy</b>. Material changes affecting how Google user data is handled will also be noted in the release notes for the version that introduces them.</p>
       <p>Because the site is developed in the open, the full revision history of this document is public in the project repository.</p>
 
-      <h2 id="contact">18. Contact</h2>
-      <p>Questions about this policy, about how the application handles your data, or about anything else in it should be raised on the project's public issue tracker:</p>
-      <p><a href="https://github.com/elboaf/FlyGD-Wingman/issues"><b>github.com/elboaf/FlyGD-Wingman/issues</b></a></p>
-      <p>This is the project's official support and contact channel. It is a volunteer project with no dedicated support address; issues are read, though no response time is guaranteed. If a matter is sensitive, say so in the issue and a private channel can be arranged.</p>
+      <h2 id="contact">15. Contact</h2>
+      <p>For privacy questions, Google Account or EVE authorization questions, data deletion requests, and security reports, email <a href="mailto:technical@zoolanders.vip"><b>technical@zoolanders.vip</b></a>. Please use that address rather than a public issue for anything sensitive.</p>
+      <p>For public bug reports and feature requests, use the project's issue tracker at <a href="https://github.com/elboaf/FlyGD-Wingman/issues"><b>github.com/elboaf/FlyGD-Wingman/issues</b></a>. It is a volunteer project; issues are read, though no response time is guaranteed.</p>
       <p><a href="/">← Back to the FlyGD Wingman homepage</a></p>
 
     </div>
@@ -231,6 +278,7 @@
           <li><a href="/terms">Terms of Service</a></li>
           <li><a href="https://github.com/elboaf/FlyGD-Wingman">GitHub</a></li>
           <li><a href="https://github.com/elboaf/FlyGD-Wingman/issues">Support</a></li>
+          <li><a href="mailto:technical@zoolanders.vip">Contact</a></li>
         </ul>
       </nav>
     </div>
