@@ -200,13 +200,12 @@ img { max-width: 100%; }
   box-shadow: -28px 44px 96px oklch(0.04 0.01 306 / .8);
 }
 
-/* Between 1000px and ~1320px the page has stopped growing (the wrap is
-   capped) but the viewport keeps shrinking, so a fixed 138% bleed starts
-   cutting the settings panel mid-sentence: 23% of the capture sat off-screen
-   at 1024px versus 8% at 1440px, and the tail of the placement helper text
-   fell outside the frame. Trimming the bleed keeps the same on-screen width
-   - the image still runs to the edge - while leaving the helper text inside
-   the frame: measured 84% of the capture visible at 1024px, 90% at 1280px. */
+/* Between 1000px and ~1320px the split columns narrow enough that a fixed
+   138% bleed cuts the settings panel mid-sentence: 23% of the capture sat
+   off-screen at 1024px versus 8% at 1440px, and the tail of the placement
+   helper text fell outside the frame. Trimming the bleed keeps the image
+   running to the edge while leaving the helper text inside the frame:
+   measured 84% of the capture visible at 1024px, 90% at 1280px. */
 @media (max-width: 1320px) {
   .hero-stage .stage-shot { width: 126%; }
 }
