@@ -30,7 +30,7 @@ Monospace is reserved for paths, OAuth scopes, compact status labels, and operat
 ## Layout
 
 - Maximum content width approximately 1180px with fluid side padding.
-- Hero: product stage. Copy sits left; an oversized application screenshot enters from the right, runs past the page gutter, and is clipped by the hero rather than by the page. The bleed is trimmed below 1320px, where the content wrap has stopped growing but the viewport has not, so the visible frame keeps its settings content intact.
+- Hero: product stage. Copy sits left; an oversized application screenshot enters from the right, runs past the page gutter, and is clipped by the hero rather than by the page. The bleed is trimmed below 1320px as the split columns narrow, so the visible frame keeps its settings content intact.
 - Second fold: a three-panel screenshot strip for Bookmarks, Uploading, and Fittings, placed directly under the hero so real product surfaces arrive before any explanatory prose.
 - Primary workflows: three equal horizontal or vertical bands, not repeated icon cards.
 - Supporting capabilities: varied editorial rhythm using grouped feature lists, operational readouts, and focused screenshots.
