@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FlyGD Wingman</title>
-<meta name="description" content="FlyGD Wingman is a Windows desktop application for OBS Studio that lets users review, stitch, and upload their OBS recordings to their own YouTube channel.">
+<title>Google OAuth use - FlyGD Wingman</title>
+<meta name="description" content="How FlyGD Wingman uses Google OAuth: one scope, https://www.googleapis.com/auth/youtube.upload, used only for uploads you start from the desktop application.">
 <link rel="canonical" href="https://wingman.zoolanders.vip/google-oauth">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -12,8 +12,8 @@
 <meta name="theme-color" content="#0a0d12">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FlyGD Wingman">
-<meta property="og:title" content="FlyGD Wingman">
-<meta property="og:description" content="A Windows desktop application for OBS Studio that lets users review, stitch, and upload their OBS recordings to their own YouTube channel.">
+<meta property="og:title" content="Google OAuth use - FlyGD Wingman">
+<meta property="og:description" content="One scope, https://www.googleapis.com/auth/youtube.upload, used only for uploads you start from the desktop application.">
 <meta property="og:url" content="https://wingman.zoolanders.vip/google-oauth">
 <meta property="og:image" content="https://wingman.zoolanders.vip/og.png">
 <meta property="og:image:width" content="1200">
@@ -34,39 +34,75 @@
     <nav class="site-nav" aria-label="Primary">
       <a href="/">Home</a>
       <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms of Service</a>
+      <a href="/terms">Terms</a>
+      <a href="https://github.com/elboaf/FlyGD-Wingman">GitHub</a>
     </nav>
   </div>
 </header>
 
-<main id="main" class="hero">
+<main id="main" class="legal">
   <div class="wrap">
-    <div class="hero-inner">
-      <h1>FlyGD Wingman</h1>
+    <div class="legal-head">
+      <span class="eyebrow">Google OAuth</span>
+      <h1>How Wingman uses Google OAuth</h1>
+      <p class="updated">FlyGD Wingman · Last updated 4 September 2026</p>
+    </div>
 
-      <p class="lede">FlyGD Wingman is a Windows desktop application for OBS Studio that lets users review, stitch, and upload their OBS recordings to their own YouTube channel.</p>
-
-      <p class="lede">FlyGD Wingman uses Google OAuth to request YouTube upload permission. This permission is used only when a user chooses a recording and initiates an upload to their YouTube channel.</p>
+    <div class="legal-body">
+      <p>FlyGD Wingman is a free, open-source EVE Online wormhole multiboxing toolkit for Windows. One of its three primary workflows uploads the fight footage you select to your own YouTube channel. That uploader is the only part of the application that touches Google.</p>
 
       <div class="actions">
-        <a class="btn btn-primary" href="https://github.com/elboaf/FlyGD-Wingman/releases/latest">Download FlyGD Wingman</a>
         <a class="btn btn-ghost" href="/privacy">Privacy Policy</a>
         <a class="btn btn-ghost" href="/terms">Terms of Service</a>
+        <a class="btn btn-ghost" href="https://github.com/elboaf/FlyGD-Wingman">Source on GitHub</a>
       </div>
+
+      <h2 id="scope">The single scope</h2>
+      <p>Wingman requests exactly one OAuth scope:</p>
+      <code class="scope">https://www.googleapis.com/auth/youtube.upload</code>
+      <p>This is the narrowest scope Google offers that permits uploading a video. Using it, Wingman calls one YouTube Data API v3 method, <code>videos.insert</code>, and calls it only when you have selected a recording and pressed upload. Nothing uploads on its own.</p>
+      <p>Wingman holds no scope that could read your YouTube account data. It does not list, edit or delete anything already on your channel, and it does not request your name, email address, profile picture, subscriptions, playlists, comments, watch history or analytics.</p>
+      <p>The application's Google OAuth client is <b>verified by Google</b>, so sign-in shows Google's ordinary consent screen. Sign-in uses Google's standard installed-application flow: your browser opens Google's own page, you authenticate with Google directly, and the response returns to a temporary listener on your own machine. Wingman never sees or handles your Google password.</p>
+
+      <h2 id="eve">The EVE tools do not use Google</h2>
+      <p>Client previews, bookmark keybinds, combat alerts, Profiles, Skills and Fittings are independent of Google. They need no Google Account, they receive no Google or YouTube data, and no EVE data of yours is sent to Google. EVE authorization uses CCP's own EVE SSO and ESI services, described in the <a href="/privacy#eve">Privacy Policy</a>. You can use the EVE toolkit without ever connecting a Google Account.</p>
+
+      <h2 id="data">What is stored, and where</h2>
+      <p>There is no FlyGD backend. Google data never reaches the maintainers, because there is no system that could receive it.</p>
+      <dl class="kv">
+        <div><dt>Credentials</dt><dd>Your Google OAuth access and refresh tokens are stored on your own PC in the application's data folder, as described in the <a href="/privacy#storage">Privacy Policy</a>.</dd></div>
+        <div><dt>Upload history</dt><dd>A local record mapping each uploaded recording to the YouTube URL it produced, kept on your PC so the application can show you what has already been uploaded.</dd></div>
+        <div><dt>Each upload sends</dt><dd>The video file you selected, plus the title, description, category and privacy status you set. Video data travels directly from your PC to Google.</dd></div>
+      </dl>
+      <p>FlyGD Wingman's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. The <a href="/privacy#google">Privacy Policy</a> sets out the full disclosure, and <a href="/privacy#revoking">how to revoke access</a> at any time from your Google Account.</p>
+
+      <p><a href="/">← Back to the FlyGD Wingman homepage</a></p>
     </div>
   </div>
 </main>
 
 <footer class="site-foot">
   <div class="wrap">
-    <nav aria-label="Footer">
-      <ul class="foot-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/privacy">Privacy Policy</a></li>
-        <li><a href="/terms">Terms of Service</a></li>
-      </ul>
-    </nav>
-    <p class="foot-note">FlyGD Wingman is an independent application. It is not affiliated with, endorsed by, or sponsored by Google LLC, YouTube, or the OBS Project.</p>
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/">
+          <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true" focusable="false"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 L14.5 18 L4 27" stroke="#6fd8ec" stroke-width="3.4" opacity=".85"/><path d="M12 4 L26 16 L12 28" stroke="#0a0d12" stroke-width="7.5"/><path d="M12 4 L26 16 L12 28" stroke="#ffb224" stroke-width="4.2"/></g></svg>
+          <b>FlyGD Wingman</b>
+        </a>
+        <p class="foot-domain mt-sm">wingman.zoolanders.vip</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="foot-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="https://github.com/elboaf/FlyGD-Wingman">GitHub</a></li>
+          <li><a href="https://github.com/elboaf/FlyGD-Wingman/issues">Support</a></li>
+          <li><a href="mailto:technical@zoolanders.vip">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="foot-note">FlyGD Wingman is an independent, community-built application. It is not affiliated with, endorsed by, or sponsored by Google LLC, YouTube, OBS Studio or the OBS Project, Discord Inc., or CCP hf. and EVE Online. All trademarks are the property of their respective owners.</p>
   </div>
 </footer>
 </body>
