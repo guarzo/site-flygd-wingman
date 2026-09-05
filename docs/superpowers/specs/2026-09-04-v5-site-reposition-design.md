@@ -191,7 +191,7 @@ Avoid a brittle exhaustive filename list in prose. Provide the current applicati
 - Explain GitHub update checks and explicit downloads.
 - Keep recording deletion warnings and add that Wingman can rename selected recordings.
 - Give current clean-slate instructions that first tell the user to exit Wingman, then remove the active `%LOCALAPPDATA%\FlyGD Wingman\` directory. Where automatic migration failed, the active directory may remain `%LOCALAPPDATA%\OBSYouTubeUploader\`; removing both locations is the safe clean-slate instruction when the active location is unknown.
-- Preserve disclosure that Cloudflare may process ordinary web request information, including IP addresses, as the site's hosting provider. Determine and describe what the enabled Workers observability setting records for this assets-only deployment, or disable it before publishing a broader no-logging claim.
+- Preserve disclosure that Cloudflare may process ordinary web request information, including IP addresses, as the site's hosting provider. Cloudflare documents that matching static assets are served without invoking Worker code; the enabled Workers observability setting persists Worker invocation logs rather than adding browser analytics. State the user-relevant hosting distinction without implying that the application or website runs client-side tracking.
 - Direct sensitive requests to `technical@zoolanders.vip`.
 
 ## Terms changes
