@@ -37,15 +37,13 @@ html {
   scroll-padding-top: 76px;
 }
 
-/* The header is sticky, so an in-page anchor (the skip link, the homepage
-   nav, the legal tables of contents) has to clear it. Measured header
-   heights in Chrome: 65px while the nav fits one row, 96px once it wraps to
-   two, and 148px once it wraps to three — the homepage wraps to three below
-   450px and to two below 680px. These offsets clear the tallest header in
-   each range with margin, so a narrower system font stack only ever
-   over-clears. */
-@media (max-width: 800px) { html { scroll-padding-top: 108px; } }
-@media (max-width: 480px) { html { scroll-padding-top: 160px; } }
+/* The header only sticks while it fits one row (see .site-head below), so
+   an in-page anchor - the skip link, the homepage nav, the legal tables of
+   contents - only has to clear 65px of sticky chrome. Once the nav wraps the
+   header scrolls away with the page, and the offset drops to a small
+   breathing gap. Keying this to the same breakpoint as the sticky rule keeps
+   the two from drifting apart the way three hard-coded height guesses did. */
+@media (max-width: 719px) { html { scroll-padding-top: 16px; } }
 
 body {
   margin: 0;
@@ -116,10 +114,20 @@ img { max-width: 100%; }
 
 /* ---------- header ---------- */
 
+/* Sticky only while the nav fits one row. Once it wraps, the header is two
+   or three rows tall - measured 96px and 148px - and a slab that size
+   parked over a short viewport covers the hero title as soon as the reader
+   scrolls: at 410px it hid 72% of the headline after a 120px scroll. Below
+   the wrap point the header scrolls away instead, which keeps every nav link
+   visible and hands the whole viewport back to the content. The nav goes to
+   one row at ~672px in the system stack; 719px leaves room for a wider one. */
 .site-head {
   position: sticky; top: 0; z-index: 10;
   background: var(--ground);
   border-bottom: 1px solid var(--line);
+}
+@media (max-width: 719px) {
+  .site-head { position: static; }
 }
 .site-head .wrap { display: flex; align-items: center; gap: 1.5rem; min-height: 64px; flex-wrap: wrap; }
 
@@ -218,9 +226,12 @@ img { max-width: 100%; }
   .hero-stage .stage-shot {
     width: 100%;
     /* A shadow rather than a glow layer: it needs no stacking context and
-       tracks the screenshot's own box at every stacked width. */
+       tracks the screenshot's own box at every stacked width. The downward
+       offset keeps the halo off the status line, which sits only 24-35px
+       above the frame once stacked, while leaving the ring around the sides
+       and bottom of the screenshot at full strength. */
     box-shadow:
-      0 0 76px 8px oklch(0.56 0.24 306 / .4),
+      0 18px 72px 6px oklch(0.56 0.24 306 / .4),
       0 26px 64px oklch(0.04 0.01 306 / .75);
   }
   .stage-glow { display: none; }

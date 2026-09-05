@@ -43,7 +43,9 @@ At narrow widths, all compositions linearize without hiding or truncating inform
 
 ### Header
 
-Compact sticky navigation with the Wingman mark, Toolkit, Fight footage, Trust, Download, and GitHub. Avoid decorative blur.
+Compact navigation with the Wingman mark, Toolkit, Fight footage, Trust, Download, and GitHub. Avoid decorative blur.
+
+It sticks to the top only while it fits one row. Once the links wrap, the header is two or three rows tall, and a slab that size pinned over a short viewport covers the hero title as soon as the reader scrolls, so below that width it scrolls away with the page instead. No link is ever hidden or collapsed behind a toggle at any width. In-page anchor offsets follow the same breakpoint, so the two cannot drift apart.
 
 ### Hero
 
