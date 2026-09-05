@@ -30,7 +30,7 @@ Monospace is reserved for paths, OAuth scopes, compact status labels, and operat
 ## Layout
 
 - Maximum content width approximately 1180px with fluid side padding.
-- Hero: product stage. Copy sits left; an oversized application screenshot enters from the right, runs past the page gutter, and is clipped by the hero rather than by the page.
+- Hero: product stage. Copy sits left; an oversized application screenshot enters from the right, runs past the page gutter, and is clipped by the hero rather than by the page. The bleed is trimmed below 1320px, where the content wrap has stopped growing but the viewport has not, so the visible frame keeps its settings content intact.
 - Second fold: a three-panel screenshot strip for Bookmarks, Uploading, and Fittings, placed directly under the hero so real product surfaces arrive before any explanatory prose.
 - Primary workflows: three equal horizontal or vertical bands, not repeated icon cards.
 - Supporting capabilities: varied editorial rhythm using grouped feature lists, operational readouts, and focused screenshots.
@@ -47,13 +47,13 @@ Compact sticky navigation with the Wingman mark, Toolkit, Fight footage, Trust, 
 
 ### Hero
 
-**Product stage.** The application window is the hero, not an illustration beside it. It occupies roughly 60% of the desktop composition and is the first thing the page proves.
+**Product stage.** The application window is the hero, not an illustration beside it. On the split layout it occupies a little over half the viewport width - measured 53% to 55% - and runs past the right gutter, so it reads as the largest element on the page and is the first thing the page proves.
 
 - Copy column: product category, a short two-sentence headline set large with tight tracking, one explanatory sentence, Download and GitHub actions.
 - A compact monospace status line replaces the four-cell readout: Windows, GPL-3.0-only, no backend, and a link to the current release.
-- Screenshot: a real v5 capture, framed with an opaque surface, a purple-tinted border, and a soft drop shadow.
-- Atmosphere: a restrained purple radial glow sits behind the screenshot. No 3D tilt, no rasterized text, no entrance animation.
-- Stacked below 1000px the order is copy, then the screenshot at full column width; the headline and lede measures widen so the copy uses the page.
+- Screenshot: a real v5 capture, framed with an opaque surface, a purple-tinted border, and a soft drop shadow. It bleeds past the gutter, but at least 84% of the capture stays on screen at every split width so no settings row is cut mid-sentence.
+- Atmosphere: a restrained purple radial glow sits behind the screenshot on the split layout, and a matching halo travels with the screenshot once the hero stacks. No 3D tilt, no rasterized text, no entrance animation.
+- Stacked below 1000px the order is copy, then the screenshot at full column width; the headline and lede measures widen so the copy uses the page, and the purple stays on the screenshot so every hero text item keeps at least 4.5:1 contrast.
 
 ### Workflow strip
 
