@@ -89,7 +89,8 @@ img { max-width: 100%; }
 }
 .skip:focus { left: 0; top: 0; }
 
-.hero-grid { display: grid; grid-template-columns: minmax(0,.88fr) minmax(420px,1.12fr); align-items: center; gap: clamp(2rem, 5vw, 3.5rem); }
+.stage-grid { display: grid; grid-template-columns: minmax(0,.86fr) minmax(0,1.14fr); align-items: center; gap: clamp(1.5rem, 3.5vw, 3rem); position: relative; }
+.strip-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(.65rem, 1.4vw, 1.15rem); }
 .workflow-list { border-block: 1px solid var(--line); }
 .workflow { display: grid; grid-template-columns: 4rem minmax(0,.8fr) minmax(0,1.2fr); gap: 1.5rem; padding: 2rem 0; align-items: start; }
 .workflow + .workflow { border-top: 1px solid var(--line); }
@@ -100,12 +101,15 @@ img { max-width: 100%; }
 }
 .feature-split { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,.9fr); gap: clamp(1.5rem, 4vw, 2.5rem); align-items: center; }
 
-/* The hero's asymmetric split needs room for both columns: the screenshot
-   holds a 420px floor, so below ~1000px the copy column collapses to an
-   unreadable measure (276px / 25.5ch at 840px). Linearize it earlier than
-   the other compositions, which tolerate the narrower split. */
+/* The stage hero's asymmetric split needs room for both columns: below
+   ~1000px the copy column collapses to an unreadable measure, so it
+   linearizes earlier than the other compositions, which tolerate the
+   narrower split. Once stacked, the screenshot stops bleeding right and
+   simply fills the column. */
 @media (max-width: 1000px) {
-  .hero-grid { grid-template-columns: 1fr; }
+  .stage-grid { grid-template-columns: 1fr; }
+  .hero-stage .stage-shot { width: 100%; }
+  .stage-glow { inset: -10% -20% auto -20%; }
 }
 
 @media (max-width: 800px) {
@@ -135,7 +139,7 @@ img { max-width: 100%; }
 .site-nav a:hover, .site-nav a:focus-visible, .site-nav a[aria-current="page"] { color: var(--ink); }
 .site-nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--accent); }
 
-/* ---------- hero (shared: homepage grid hero + narrow legacy hero) ---------- */
+/* ---------- hero (shared: homepage product stage + narrow legacy hero) ---------- */
 
 .hero { padding: clamp(2.5rem, 8vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem); }
 .hero-inner { max-width: var(--prose); }
@@ -143,9 +147,112 @@ img { max-width: 100%; }
 .hero h1 { margin-bottom: .35em; }
 .hero .lede { max-width: 62ch; color: var(--ink-dim); font-size: clamp(1.0625rem, 1rem + .35vw, 1.1875rem); }
 
+/* Product stage: the application window is the hero, not an illustration
+   beside it. It is deliberately wider than its grid column so it runs past
+   the page gutter; the section clips the overflow so the page never gains a
+   horizontal scrollbar. */
+.hero-stage {
+  position: relative;
+  padding: clamp(2rem, 4.5vw, 3.25rem) 0 clamp(2rem, 4vw, 3rem);
+  overflow: hidden;
+  overflow: clip;
+}
+.stage-glow {
+  position: absolute; inset: -30% -18% auto 8%; height: 165%;
+  background:
+    radial-gradient(42% 44% at 62% 46%, oklch(0.60 0.25 306 / .45), transparent 72%),
+    radial-gradient(76% 74% at 60% 50%, oklch(0.42 0.19 306 / .26), transparent 74%);
+  pointer-events: none;
+}
+
+.hero-copy { position: relative; }
 .hero-copy .eyebrow { margin-bottom: .75rem; }
-.hero-copy p.lede { max-width: 56ch; }
-.hero-media img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
+.hero-stage h1 {
+  font-size: clamp(2.625rem, 1.35rem + 4.4vw, 4.375rem);
+  line-height: .96; letter-spacing: -0.045em; font-weight: 700;
+  max-width: 12ch; margin-bottom: .5rem;
+}
+.hero-stage p.lede { max-width: 46ch; }
+
+.hero-status {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem;
+  list-style: none; margin: 1.5rem 0 0; padding: 0;
+  font-family: var(--mono); font-size: .6875rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.hero-status li { display: inline-flex; align-items: center; gap: .75rem; }
+.hero-status li + li::before {
+  content: ""; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--line-strong); flex: none;
+}
+
+.stage-frame { position: relative; margin: 0; }
+.stage-shot {
+  display: block; width: 138%; max-width: none; height: auto;
+  border: 1px solid oklch(0.56 0.16 306 / .6);
+  border-radius: 10px; background: var(--surface);
+  box-shadow: -28px 44px 96px oklch(0.04 0.01 306 / .8);
+}
+
+/* Once the hero stacks, the copy owns the full page width: the narrow
+   headline and lede measures exist only to protect the split layout's left
+   column. These overrides have to follow the base rules above, not sit with
+   the other layout media queries, because they share their specificity. */
+@media (max-width: 1000px) {
+  .hero-stage h1 { max-width: 20ch; }
+  .hero-stage p.lede { max-width: 62ch; }
+}
+
+/* ---------- workflow strip (second fold: three real surfaces) ---------- */
+
+.strip {
+  padding: clamp(1rem, 2.5vw, 1.75rem) 0 clamp(2rem, 4vw, 2.75rem);
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, oklch(0.17 0.032 306), var(--ground) 78%);
+}
+.strip + .section { border-top: 0; }
+
+.strip-shot {
+  position: relative; margin: 0; overflow: hidden;
+  aspect-ratio: 5 / 4;
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  background: var(--surface);
+}
+/* Each panel is a zoomed crop, not a shrunk full window: a whole 1600px
+   screenshot scaled into a third of the page is unreadable. Width and
+   offset are tuned per screenshot so the panel lands on that workflow's
+   content rather than on its title bar. */
+.strip-shot img { position: absolute; display: block; width: 236%; max-width: none; height: auto; }
+.strip-shot:nth-child(1) img { left: -45%; top: -13%; }
+.strip-shot:nth-child(2) img { left: -3%; top: -11%; }
+.strip-shot:nth-child(3) img { left: -5%; top: -13%; }
+.strip-shot::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 32%;
+  background: linear-gradient(to top, oklch(0.10 0.02 306 / .92), oklch(0.10 0.02 306 / .4) 50%, transparent);
+}
+.strip-shot figcaption {
+  position: absolute; left: .75rem; bottom: .75rem; z-index: 1;
+  font-family: var(--mono); font-size: .6875rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink); background: var(--surface-raised);
+  border: 1px solid var(--line-strong); border-radius: 5px; padding: .35rem .55rem;
+}
+
+@media (max-width: 900px) {
+  .strip-grid { grid-template-columns: 1fr; }
+  .strip-shot { aspect-ratio: 16 / 7; }
+  .strip-shot img { width: 132%; }
+  .strip-shot:nth-child(1) img { left: -22%; top: -16%; }
+  .strip-shot:nth-child(2) img { left: -1%; top: -15%; }
+  .strip-shot:nth-child(3) img { left: -3%; top: -16%; }
+}
+
+@media (max-width: 560px) {
+  .strip-shot { aspect-ratio: 4 / 3; }
+  .strip-shot img { width: 215%; }
+  .strip-shot:nth-child(1) img { left: -40%; top: -12%; }
+  .strip-shot:nth-child(2) img { left: -3%; top: -10%; }
+  .strip-shot:nth-child(3) img { left: -5%; top: -12%; }
+}
 
 .pill {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -183,7 +290,8 @@ img { max-width: 100%; }
 
 /* ---------- sections ---------- */
 
-.section { padding: clamp(2.5rem, 6vw, 4rem) 0; border-top: 1px solid var(--line); }
+.section { padding: clamp(2.75rem, 6vw, 4.25rem) 0; border-top: 1px solid var(--line); }
+.section h2 { font-size: clamp(1.625rem, 1.2rem + 1.4vw, 2.25rem); letter-spacing: -0.032em; }
 .section > .wrap > .section-head { max-width: var(--prose); margin-bottom: 2rem; }
 .section-head p { color: var(--ink-dim); margin-bottom: 0; }
 
@@ -197,10 +305,6 @@ img { max-width: 100%; }
 .workflow-number { font-family: var(--mono); font-size: 1.75rem; font-weight: 600; color: var(--accent); line-height: 1; }
 .workflow h3 { font-size: 1.375rem; margin-bottom: .5rem; }
 .workflow > div p { color: var(--ink-dim); }
-.workflow img {
-  margin-top: 1rem; display: block; width: 100%; max-width: 26rem; height: auto;
-  border-radius: var(--radius); border: 1px solid var(--line);
-}
 
 .compact-list { list-style: none; margin: .75rem 0 0; padding: 0; display: grid; gap: .5rem; }
 .compact-list li { position: relative; padding-left: 1.25rem; color: var(--ink-dim); font-size: .9375rem; }
@@ -210,15 +314,25 @@ img { max-width: 100%; }
 }
 .compact-list li b { color: var(--ink); }
 
-/* ---------- feature split (fleet prep, fight footage) ---------- */
+/* ---------- feature split (client awareness, fight footage) ---------- */
 
-.feature-split img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line); }
+.panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
 
-.feature-list { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 1.25rem; }
-.feature-list h3 { margin-bottom: .25rem; }
-.feature-list p { color: var(--ink-dim); font-size: .9375rem; margin: 0; }
+.feature-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.feature-grid li { background: var(--surface); padding: 1.35rem 1.5rem; }
+.feature-grid h3 { margin-bottom: .35rem; }
+.feature-grid p { color: var(--ink-dim); font-size: .9375rem; margin: 0; }
 
 .process-list { list-style: none; margin: 1.25rem 0 0; padding: 0; counter-reset: step; display: grid; gap: 1rem; }
+.process-list.panel { margin: 0; padding-left: clamp(1.25rem, 3vw, 1.75rem); }
 .process-list li { position: relative; padding-left: 2.25rem; color: var(--ink-dim); font-size: .9375rem; }
 .process-list li::before {
   counter-increment: step; content: counter(step);
@@ -272,6 +386,7 @@ img { max-width: 100%; }
 
 /* utilities (kept as classes so the CSP can forbid inline styles) */
 .mt-sm { margin: .5rem 0 0; }
+.nowrap { white-space: nowrap; }
 
 /* ---------- footer ---------- */
 

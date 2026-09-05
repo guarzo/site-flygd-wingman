@@ -61,12 +61,13 @@
 
 <main id="main">
 
-<section class="hero">
-  <div class="wrap hero-grid">
+<section class="hero hero-stage">
+  <div class="stage-glow" aria-hidden="true"></div>
+  <div class="wrap stage-grid">
     <div class="hero-copy">
       <p class="eyebrow">Wormhole multiboxing toolkit</p>
-      <h1>Fly more clients. Miss less.</h1>
-      <p class="lede">FlyGD Wingman previews every running EVE client so you can see all of them at once, fires wormhole mapping and rolling keybinds without leaving the client you're flying, watches gamelogs for trouble across the fleet, and uploads the fight footage you select to your own YouTube channel.</p>
+      <h1>Fly more clients. <span class="nowrap">Miss less.</span></h1>
+      <p class="lede">Preview every running EVE client, fire wormhole mapping keybinds without leaving the client you're flying, and upload the fight footage you select to your own YouTube channel.</p>
 
       <div class="actions">
         <a class="btn btn-primary" href="https://github.com/elboaf/FlyGD-Wingman/releases/latest">
@@ -79,16 +80,33 @@
         </a>
       </div>
 
-      <dl class="readout-grid">
-        <div><dt>Platform</dt><dd>Windows 10/11</dd></div>
-        <div><dt>Licence</dt><dd>GPL-3.0-only</dd></div>
-        <div><dt>Backend</dt><dd>None, local-first</dd></div>
-        <div><dt>Release</dt><dd><a href="https://github.com/elboaf/FlyGD-Wingman/releases/latest">Latest on GitHub</a></dd></div>
-      </dl>
+      <ul class="hero-status">
+        <li>Windows 10/11</li>
+        <li>GPL-3.0-only</li>
+        <li>No backend</li>
+        <li><a href="https://github.com/elboaf/FlyGD-Wingman/releases/latest">Latest release</a></li>
+      </ul>
     </div>
-    <div class="hero-media">
-      <img src="/media/wingman-previews.webp" width="1600" height="998" loading="eager" alt="Wingman Previews settings showing appearance, opacity, placement, and shape options for EVE client previews">
-    </div>
+    <figure class="stage-frame">
+      <img class="stage-shot" src="/media/wingman-previews.webp" width="1600" height="998" loading="eager" fetchpriority="high" decoding="async" alt="Wingman Previews settings showing appearance, opacity, placement, and shape options for EVE client previews">
+    </figure>
+  </div>
+</section>
+
+<section class="strip" id="workflow-strip" aria-label="Wingman workflow screenshots">
+  <div class="wrap strip-grid">
+    <figure class="strip-shot">
+      <img src="/media/wingman-bookmarks.webp" width="1600" height="998" loading="lazy" decoding="async" alt="Wingman Bookmarks settings showing wormhole mapping keybinds such as Grab Sig ID and Set Root">
+      <figcaption>Bookmarks</figcaption>
+    </figure>
+    <figure class="strip-shot">
+      <img src="/media/wingman-uploader.webp" width="1600" height="998" loading="lazy" decoding="async" alt="Wingman Uploader listing recorded fights with age, size, and length columns">
+      <figcaption>Uploading</figcaption>
+    </figure>
+    <figure class="strip-shot">
+      <img src="/media/wingman-fittings.webp" width="1600" height="998" loading="lazy" decoding="async" alt="Wingman Fittings library showing collections beside a list of saved ship fits">
+      <figcaption>Fittings</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -125,7 +143,6 @@
             <li>Bindings are global and scoped to clients you've enabled; per-character keybinds belong to Previews.</li>
             <li><b>Boundary:</b> every bookmark action runs from an explicit keypress in an enabled client. Nothing fires on its own.</li>
           </ul>
-          <img src="/media/wingman-bookmarks.webp" width="1600" height="998" loading="lazy" alt="Wingman Bookmarks settings listing wormhole mapping keybinds and finisher bindings">
         </div>
       </article>
 
@@ -168,31 +185,30 @@
 </section>
 
 <section class="section" id="fleet-prep">
-  <div class="wrap feature-split">
-    <div>
+  <div class="wrap">
+    <div class="section-head">
       <span class="eyebrow">Fleet preparation</span>
       <h2>Prepare the fleet between fights</h2>
       <p>Profiles, Skills, and Fittings are occasional preparation work, not something you touch mid-fight. One authorization in Settings → Characters covers both Skills and Fittings.</p>
-      <ul class="feature-list">
-        <li>
-          <h3>Profiles</h3>
-          <p>Copies a character's or account's EVE settings onto others, taking a backup first so the original can be restored.</p>
-        </li>
-        <li>
-          <h3>Skills</h3>
-          <p>Reads each character's trained skills and current training queue through ESI and compares them with the skill plans you maintain locally, so gaps in fleet readiness show up before you need them.</p>
-        </li>
-        <li>
-          <h3>Fittings</h3>
-          <p>Keeps a local, curated library of fits and copies the ones you choose into the game. Copies are additive: existing in-game fits are never overwritten or removed.</p>
-        </li>
-        <li>
-          <h3>Characters</h3>
-          <p>Settings → Characters authorizes each EVE character once through EVE SSO. Skills and Fittings both use that same authorization.</p>
-        </li>
-      </ul>
     </div>
-    <img src="/media/wingman-fittings.webp" width="1600" height="998" loading="lazy" alt="Wingman Fittings library showing a collections sidebar and a curated list of ship fits">
+    <ul class="feature-grid">
+      <li>
+        <h3>Profiles</h3>
+        <p>Copies a character's or account's EVE settings onto others, taking a backup first so the original can be restored.</p>
+      </li>
+      <li>
+        <h3>Skills</h3>
+        <p>Reads each character's trained skills and current training queue through ESI and compares them with the skill plans you maintain locally, so gaps in fleet readiness show up before you need them.</p>
+      </li>
+      <li>
+        <h3>Fittings</h3>
+        <p>Keeps a local, curated library of fits and copies the ones you choose into the game. Copies are additive: existing in-game fits are never overwritten or removed.</p>
+      </li>
+      <li>
+        <h3>Characters</h3>
+        <p>Settings → Characters authorizes each EVE character once through EVE SSO. Skills and Fittings both use that same authorization.</p>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -202,15 +218,14 @@
       <span class="eyebrow">Fight footage</span>
       <h2>From recorded fight to shared link</h2>
       <p>Fight footage is one of Wingman's three primary workflows, not the whole product. OBS or the optional FightRecorder plugin creates the recording; everything after that is under your control.</p>
-      <ol class="process-list">
-        <li>OBS, or the optional FightRecorder plugin, creates the recording.</li>
-        <li>Wingman notices the finished file in your recordings folder.</li>
-        <li>You review, play, rename, or stitch together the recordings you choose.</li>
-        <li>You upload only the footage you explicitly selected, to your own YouTube channel.</li>
-        <li>If a Discord webhook is configured, matching combat logs post automatically after a successful upload. A separate "Post the last hour" action is also available on demand.</li>
-      </ol>
     </div>
-    <img src="/media/wingman-uploader.webp" width="1600" height="998" loading="lazy" alt="Wingman Uploader tab listing recorded fights alongside upload title and description fields">
+    <ol class="process-list panel">
+      <li>OBS, or the optional FightRecorder plugin, creates the recording.</li>
+      <li>Wingman notices the finished file in your recordings folder.</li>
+      <li>You review, play, rename, or stitch together the recordings you choose.</li>
+      <li>You upload only the footage you explicitly selected, to your own YouTube channel.</li>
+      <li>If a Discord webhook is configured, matching combat logs post automatically after a successful upload. A separate "Post the last hour" action is also available on demand.</li>
+    </ol>
   </div>
 </section>
 

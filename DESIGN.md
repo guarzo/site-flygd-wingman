@@ -30,7 +30,8 @@ Monospace is reserved for paths, OAuth scopes, compact status labels, and operat
 ## Layout
 
 - Maximum content width approximately 1180px with fluid side padding.
-- Hero: asymmetric split, copy left and a real application screenshot entering from the right.
+- Hero: product stage. Copy sits left; an oversized application screenshot enters from the right, runs past the page gutter, and is clipped by the hero rather than by the page.
+- Second fold: a three-panel screenshot strip for Bookmarks, Uploading, and Fittings, placed directly under the hero so real product surfaces arrive before any explanatory prose.
 - Primary workflows: three equal horizontal or vertical bands, not repeated icon cards.
 - Supporting capabilities: varied editorial rhythm using grouped feature lists, operational readouts, and focused screenshots.
 - Trust content: restrained prose and data-boundary rows, optimized for scanning and review.
@@ -46,11 +47,21 @@ Compact sticky navigation with the Wingman mark, Toolkit, Fight footage, Trust, 
 
 ### Hero
 
-Product category, concise operational headline, one explanatory paragraph, Download and GitHub actions, a real v5 screenshot, and a four-item status strip for Windows, GPL-3.0-only, local-first operation, and current release.
+**Product stage.** The application window is the hero, not an illustration beside it. It occupies roughly 60% of the desktop composition and is the first thing the page proves.
+
+- Copy column: product category, a short two-sentence headline set large with tight tracking, one explanatory sentence, Download and GitHub actions.
+- A compact monospace status line replaces the four-cell readout: Windows, GPL-3.0-only, no backend, and a link to the current release.
+- Screenshot: a real v5 capture, framed with an opaque surface, a purple-tinted border, and a soft drop shadow.
+- Atmosphere: a restrained purple radial glow sits behind the screenshot. No 3D tilt, no rasterized text, no entrance animation.
+- Stacked below 1000px the order is copy, then the screenshot at full column width; the headline and lede measures widen so the copy uses the page.
+
+### Workflow strip
+
+The second fold is three screenshot panels labelled Bookmarks, Uploading, and Fittings. Each panel is a zoomed CSS crop of a committed screenshot, positioned on that workflow's content rather than on the window title bar, because a whole 1600px capture scaled into a third of the page is unreadable. Panels carry an opaque monospace caption over a bottom scrim, and they stack to one column below 900px with the crop re-tuned so the content stays legible.
 
 ### Workflow bands
 
-Each primary workflow gets a number, direct title, short outcome, selected details, and optional screenshot crop. They share prominence but not a generic card template.
+Each primary workflow gets a number, direct title, short outcome, and selected details. They share prominence but not a generic card template. Screenshots for these workflows live in the workflow strip above rather than repeating inside the bands.
 
 ### Operational readouts
 
@@ -66,7 +77,7 @@ Use full borders or background changes with a clear heading or icon. Do not use 
 
 ## Imagery
 
-Use only current screenshots and brand assets from the v5 product repository. The approved capture set is `/mnt/c/dev/flygd-wingman/tmp/screens/20260905T034121Z`, whose manifest records product SHA `3e8611c` and 33 successful captures. Select only the few images that clarify the homepage narrative, verify their visible state against v5.0.0, then crop, optimize, and commit local derivatives. Do not load images from the product checkout or GitHub at runtime. Alt text should state the visible workflow rather than repeat nearby copy.
+Use only current screenshots and brand assets from the v5 product repository. Screenshots lead the homepage: the hero capture and the three strip panels are the page's primary visual argument, and no screenshot is repeated further down the page. The approved capture set is `/mnt/c/dev/flygd-wingman/tmp/screens/20260905T034121Z`, whose manifest records product SHA `3e8611c` and 33 successful captures. Select only the few images that clarify the homepage narrative, verify their visible state against v5.0.0, then crop, optimize, and commit local derivatives. Framing and zoom are done in CSS against those committed files, so a crop can be retuned without recutting an asset. Do not load images from the product checkout or GitHub at runtime. Alt text should state the visible workflow, including what a crop actually shows, rather than repeat nearby copy.
 
 ## Motion
 

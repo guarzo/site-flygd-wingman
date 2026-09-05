@@ -25,6 +25,22 @@ const contracts = {
       "id=\"toolkit\"",
       "id=\"fight-footage\"",
       "id=\"trust\"",
+      // Product-stage hero: the screenshot is the dominant element, framed
+      // and glowing, with the compact status line folded into the hero copy
+      // instead of a four-cell readout grid.
+      "class=\"hero hero-stage\"",
+      "class=\"stage-frame\"",
+      "class=\"stage-shot\" src=\"/media/wingman-previews.webp\"",
+      "class=\"hero-status\"",
+      // Second fold: a three-panel workflow strip, one real screenshot each.
+      "id=\"workflow-strip\"",
+      "class=\"wrap strip-grid\"",
+      "src=\"/media/wingman-bookmarks.webp\"",
+      "src=\"/media/wingman-uploader.webp\"",
+      "src=\"/media/wingman-fittings.webp\"",
+      "<figcaption>Bookmarks</figcaption>",
+      "<figcaption>Uploading</figcaption>",
+      "<figcaption>Fittings</figcaption>",
       // The three workflow bands, not the header navigation words: each
       // band must keep its label and its heading below the section h2.
       "<p class=\"eyebrow\">Previews</p><h3>",
@@ -34,6 +50,9 @@ const contracts = {
       "technical@zoolanders.vip",
     ],
     mustNot: ["Google hasn’t verified"],
+    // The strip is three panels, not two and not a repeated gallery: a count
+    // is the only assertion that pins the composition itself.
+    occurrences: { "class=\"strip-shot\"": 3 },
   },
   privacy: {
     must: [
@@ -86,6 +105,12 @@ for (const name of names) {
   }
   for (const text of contract.must) {
     if (!html.includes(text)) failures.push(`${name}: missing ${JSON.stringify(text)}`);
+  }
+  for (const [text, expected] of Object.entries(contract.occurrences ?? {})) {
+    const found = html.split(text).length - 1;
+    if (found !== expected) {
+      failures.push(`${name}: expected ${expected}x ${JSON.stringify(text)}, found ${found}`);
+    }
   }
   const lower = html.toLowerCase();
   const allowed = bannedExceptions[name] ?? [];
