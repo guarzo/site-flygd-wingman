@@ -1,7 +1,11 @@
-# FlyGD Wingman — website
+# FlyGD Wingman - website
 
-The public website for **FlyGD Wingman**, a free and open-source Windows
-companion application for OBS Studio.
+The public website for **FlyGD Wingman v5**, a free and open-source Windows
+wormhole multiboxing toolkit for EVE Online. It previews and switches every
+running client, fires wormhole mapping and rolling keybinds, watches gamelogs
+and the fleet combat bar for trouble, helps prepare profiles, skills and
+fittings between fights, and uploads the fight footage you select to your own
+YouTube channel.
 
 Live at **https://wingman.zoolanders.vip**
 
@@ -14,19 +18,42 @@ Live at **https://wingman.zoolanders.vip**
 | *(anything else)* | `public/404.html` | Not-found page |
 
 The site also serves the Google OAuth verification requirements: the homepage
-explains the single requested scope (`youtube.upload`), what it is used for,
-where credentials are stored, and how to revoke access; the Privacy Policy and
-Terms are linked from the header and footer of every page.
+and the dedicated `/google-oauth` page explain the single requested scope
+(`youtube.upload`), what it is used for, where credentials are stored, and how
+to revoke access; the Privacy Policy and Terms are linked from the header and
+footer of every page.
+
+## Primary workflows
+
+The homepage is organised around FlyGD Wingman's three equally-important
+workflows, plus the fleet-awareness and fleet-preparation features that
+support them:
+
+- **Previews**: mirrors every running EVE client into an always-on-top
+  preview window and switches which one is active, without resizing or
+  moving the game windows.
+- **Bookmarks**: 18 FlyGD keybinds place wormhole mapping bookmarks and
+  drive rolling from an explicit keypress in an enabled client.
+- **Uploading**: reviews, plays, renames or stitches the recordings OBS or
+  the optional FightRecorder plugin produced, and uploads the ones you select
+  to your own YouTube channel.
+- **Client awareness**: watches gamelogs for combat starts, warp disruption
+  and decloaks, and keeps a fleet-wide combat bar.
+- **Fleet preparation**: Profiles, Skills and Fittings help prepare between
+  fights, authorized once per character through EVE SSO.
 
 ## What this is built with
 
 Nothing. That is deliberate.
 
 Hand-written HTML, one stylesheet, and inline SVG. There is **no framework, no
-build step, no bundler, and no runtime JavaScript** — the files in `public/`
-are exactly what gets served. The only dependency in the project is
-[Wrangler](https://developers.cloudflare.com/workers/wrangler/), and that is
-used solely to preview and deploy.
+build step, no bundler, and no runtime JavaScript** - the files in `public/`
+are exactly what gets served. This is unchanged from earlier versions of the
+site: only the product content, metadata and imagery describe v5. The only
+dependencies in the project are
+[Wrangler](https://developers.cloudflare.com/workers/wrangler/), used to
+preview and deploy, and [html-validate](https://html-validate.org/), used by
+`npm run check` to catch HTML defects locally.
 
 There are no cookies, no analytics, no trackers, and no external fonts or
 assets, so no consent banner is required.
@@ -38,24 +65,48 @@ public/
   wingman-mark.svg        # original logo mark
   favicon.svg  favicon.ico  apple-touch-icon.png
   og.png                  # Open Graph card (1200×630)
+  media/                  # product screenshots used on the homepage
   robots.txt  sitemap.xml
   _headers                # security headers + cache policy
 scripts/check-links.mjs   # zero-dependency link checker
+scripts/check-content.mjs # zero-dependency page-content contract checker
 wrangler.jsonc            # Cloudflare configuration
 ```
 
+### `public/media/`
+
+The homepage screenshots in `public/media/` (`wingman-previews.webp`,
+`wingman-bookmarks.webp`, `wingman-fittings.webp`, `wingman-uploader.webp`)
+are WEBP derivatives of PNG captures taken directly from the v5.0.0 build of
+[elboaf/FlyGD-Wingman](https://github.com/elboaf/FlyGD-Wingman), converted to
+RGB, thumbnailed to a maximum width of 1600px, and re-encoded at WEBP
+quality 82. The source screenshots are not committed to this repository; if
+you need to regenerate a derivative, recapture the corresponding screen from
+a current release build and repeat that conversion with Pillow. There is no
+committed script that automates this end to end, since it only needs to run
+on the rare occasion a screenshot goes stale.
+
+The Open Graph card (`public/og.png`) was produced the same way: a one-off
+Pillow script rendered the Command deck palette and the real
+`wingman-mark.svg` (rasterised with cairosvg) onto a 1200×630 canvas with
+local system fonts (Inter for display type, a monospace system font for the
+domain line). That script is not committed either; regenerating the card
+only requires reproducing a 1200×630 PNG with the current wordmark, category,
+and tagline, checked at both full size and thumbnail size for legibility.
+
 ## Local development
 
-Requires Node.js 20 or newer.
+Requires **Node.js 20.11 or newer** (`scripts/check-content.mjs` uses
+`import.meta.dirname`, added in Node 20.11).
 
 ```bash
-npm install     # installs wrangler only
+npm install     # installs wrangler and html-validate
 npm run dev     # serves on http://localhost:8787
 ```
 
 `wrangler dev` serves `public/` through the same Workers Static Assets runtime
 that Cloudflare uses in production, so local URL behaviour matches the deployed
-site exactly — including `/privacy` resolving to `privacy.html` and unknown
+site exactly, including `/privacy` resolving to `privacy.html` and unknown
 paths returning the 404 page with a real 404 status.
 
 Edit a file and refresh. There is nothing to rebuild.
@@ -64,27 +115,40 @@ Edit a file and refresh. There is nothing to rebuild.
 
 There is no build step. `public/` is the deployable artifact.
 
-The only generated files are the icons and the Open Graph image, which are
-committed to the repository and only need regenerating if the logo or the
-wording on the card changes.
+The only generated files are the icons, the homepage screenshots and the
+Open Graph image, which are committed to the repository and only need
+regenerating if the product's UI, the logo, or the wording on the card
+changes.
 
 ## Checks
 
 ```bash
-npm run check              # internal links + fragment anchors
-node scripts/check-links.mjs --external   # also HEAD-checks outbound links
+npm run check              # the complete fast local gate (links + content + HTML)
+npm run check:links        # internal links + fragment anchors
+npm run check:content      # page-content contracts (licence, scopes, stale claims)
+npm run check:html         # html-validate against public/*.html
+node scripts/check-links.mjs --external   # also HEAD-checks outbound links (optional)
 ```
 
-The checker mirrors the production routing rules, so a link that passes here
-resolves on the deployed site. It exits non-zero on failure and is safe to run
-in CI.
+`check:links` mirrors the production routing rules, so a link that passes
+here resolves on the deployed site. `check:content` guards specific factual
+claims (the GPL-3.0-only licence, the exact OAuth and ESI scopes, stale
+wording that must never reappear) against each page's actual text.
+`check:html` runs [html-validate](https://html-validate.org/) with the
+project's `.htmlvalidate.json` config, extending `html-validate:recommended`
+with stricter accessible-name and inline-style rules. All three exit non-zero
+on failure and are safe to run in CI. The external-link check is optional
+because some providers block automated `HEAD` requests from this kind of
+environment; a failure there should be verified manually rather than treated
+as a broken link on faith.
 
-There is no test suite; there is no application code to test.
+There is no test suite; there is no application code in this repository to
+test.
 
 ## Deploying to Cloudflare
 
 The site deploys as a **Worker with static assets** (not Cloudflare Pages).
-No Worker script is present — `wrangler.jsonc` declares only an `assets`
+No Worker script is present; `wrangler.jsonc` declares only an `assets`
 directory, so Cloudflare serves the files directly from its edge without
 invoking any compute.
 
@@ -118,7 +182,7 @@ The first `deploy` creates a Worker named `flygd-wingman-site` and gives it a
 
 ### Custom domain: wingman.zoolanders.vip
 
-The domain is declared in `wrangler.jsonc`, so it is attached by deploying —
+The domain is declared in `wrangler.jsonc`, so it is attached by deploying,
 there is nothing to click:
 
 ```jsonc
@@ -139,7 +203,7 @@ The equivalent dashboard route, if you prefer it: **Workers & Pages** →
 `flygd-wingman-site` → **Settings → Domains & Routes → Add → Custom domain**.
 
 Every Worker also keeps a `*.workers.dev` URL. That is expected, not a
-misconfiguration — but it is not the address to give Google, because the pages'
+misconfiguration, but it is not the address to give Google, because the pages'
 `canonical` and `og:url` tags point at `wingman.zoolanders.vip`.
 
 Certificate issuance usually completes within a few minutes; until it does,
@@ -154,30 +218,52 @@ the hostname may briefly serve a TLS warning.
   the zone.
 - The `Strict-Transport-Security` header in `public/_headers` applies to
   subdomains. Only keep it if every host under `zoolanders.vip` serves HTTPS.
+- The project enables Workers observability (`observability.enabled` in
+  `wrangler.jsonc`). That governs Cloudflare's own operational logging of
+  Worker invocations for this account; it adds no script, cookie or analytics
+  to a visitor's browser. Matching static assets are served without invoking
+  Worker code at all, as documented on `/privacy`.
 
 ## Editing content
 
 Each page is a single self-contained HTML file with the header and footer
 inlined. There is no templating, so a change to the navigation or footer must
-be made in all four HTML files. This is a deliberate trade: four small
-duplications in exchange for no build tooling at all. `npm run check` will
-catch a link that gets out of step.
+be made in all five HTML files. This is a deliberate trade: duplication in
+exchange for no build tooling at all. `npm run check` will catch a link or a
+factual claim that gets out of step.
 
 `styles.css` holds the whole design system in CSS custom properties at the top.
 
 ## Accuracy policy
 
-The homepage and Privacy Policy describe the behaviour of the application as
-it is actually implemented in
-[elboaf/FlyGD-Wingman](https://github.com/elboaf/FlyGD-Wingman),
-verified against the source. In particular the site states that stored OAuth
-credentials are **not** encrypted, because they are not.
+The homepage, Privacy Policy, Terms of Service and the `/google-oauth` page
+describe the behaviour of the application as it is actually implemented in
+[elboaf/FlyGD-Wingman](https://github.com/elboaf/FlyGD-Wingman). Every product
+claim on this site has been verified against **v5.0.0**. In particular the
+site states that stored Google OAuth tokens and any Discord webhook URL are
+**not** encrypted, because they are not, while EVE refresh credentials are
+protected with Windows DPAPI, because they are.
 
-If the application changes how it handles credentials, network calls, or Google
-data, update `public/privacy.html` in the same release — and check the claims
-on the homepage's "YouTube uploads & Google permissions" section too.
+Product claims are release-specific and go stale as the application changes.
+**Every release that changes data handling, network calls, requested scopes,
+stored credentials, or product behaviour described here must be re-audited
+against this site before the release ships** - update `public/privacy.html`,
+`public/terms.html`, `public/google-oauth.html` and the relevant homepage
+sections in the same pass, and re-run `npm run check` afterwards.
+
+## Support and contact
+
+Public bug reports and feature requests go to the project's
+[GitHub Issues](https://github.com/elboaf/FlyGD-Wingman/issues). For anything
+sensitive - account access, privacy, or a security report - email
+**technical@zoolanders.vip** directly rather than filing a public issue.
 
 ## Licence
 
-The site content and code are part of the FlyGD Wingman project and released
-under the MIT Licence.
+The FlyGD Wingman application is free software released under the
+**GNU General Public License, version 3 only (GPL-3.0-only)**; the full
+licence text accompanies the source in the
+[project repository](https://github.com/elboaf/FlyGD-Wingman). This website's
+own HTML, CSS and supporting files are part of the same project and carry no
+separate licence grant beyond that repository's terms; the site is not
+separately licensed under any other terms.
