@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="pGs1Vg11IZrNnXC03RzCJuP1OoVL74zuS-SB5ue2sEg">
 <meta name="google-site-verification" content="-r5_T0cY1wSHVsUI1nigE12KdVaL1Wh9HRPEX6rFUzA">
-<title>FlyGD Wingman - Upload your OBS recordings to YouTube</title>
-<meta name="description" content="FlyGD Wingman is a free, open-source Windows companion for OBS Studio. It watches your OBS recording folder and lets you review, stitch and upload recordings to your own YouTube channel. Runs entirely on your PC.">
+<title>FlyGD Wingman - EVE Online wormhole multiboxing toolkit</title>
+<meta name="description" content="FlyGD Wingman is a free, open-source Windows wormhole multiboxing toolkit for EVE Online. Preview and switch every client, fire wormhole mapping keybinds, watch for trouble, and upload your fight footage to YouTube, all from your own PC.">
 <link rel="canonical" href="https://wingman.zoolanders.vip/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#0a0d12">
+<meta name="theme-color" content="#0b070f">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FlyGD Wingman">
-<meta property="og:title" content="FlyGD Wingman - Upload your OBS recordings to YouTube">
-<meta property="og:description" content="A free, open-source Windows companion for OBS Studio. Watch, review, stitch and upload your recordings to your own YouTube channel — entirely from your PC.">
+<meta property="og:title" content="FlyGD Wingman - EVE Online wormhole multiboxing toolkit">
+<meta property="og:description" content="Preview and switch every EVE client, fire wormhole mapping keybinds, watch for trouble, and upload your fight footage to YouTube. A free, open-source Windows toolkit that runs entirely on your own PC.">
 <meta property="og:url" content="https://wingman.zoolanders.vip/">
 <meta property="og:image" content="https://wingman.zoolanders.vip/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="FlyGD Wingman — your OBS recording wingman">
+<meta property="og:image:alt" content="FlyGD Wingman: EVE Online wormhole multiboxing toolkit">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
@@ -31,10 +31,10 @@
   "operatingSystem": "Windows 10, Windows 11",
   "url": "https://wingman.zoolanders.vip/",
   "downloadUrl": "https://github.com/elboaf/FlyGD-Wingman/releases/latest",
-  "license": "https://opensource.org/licenses/MIT",
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "description": "FlyGD Wingman is a free Windows desktop application for people who record gameplay with OBS Studio. It watches your OBS recording folder, lets you review recordings and combine several into one video, and uploads the ones you choose to your own YouTube channel. It requests a single Google permission, https://www.googleapis.com/auth/youtube.upload, and uses it only to upload the recordings you select.",
+  "description": "FlyGD Wingman is a free, open-source EVE Online wormhole multiboxing toolkit for Windows. It previews and switches every running client, provides wormhole mapping and rolling keybinds, watches gamelogs and the fleet combat bar for trouble, and uploads the fight footage you select to your own YouTube channel.",
   "privacyPolicy": "https://wingman.zoolanders.vip/privacy",
   "termsOfService": "https://wingman.zoolanders.vip/terms"
 }
@@ -51,10 +51,10 @@
       <b>FlyGD Wingman</b>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="#what">Features</a>
-      <a href="#youtube">YouTube &amp; Google</a>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#fight-footage">Fight footage</a>
+      <a href="#trust">Trust</a>
+      <a href="#download">Download</a>
       <a href="https://github.com/elboaf/FlyGD-Wingman">GitHub</a>
     </nav>
   </div>
@@ -63,14 +63,11 @@
 <main id="main">
 
 <section class="hero">
-  <div class="wrap">
-    <div class="hero-inner">
-      <p class="pill"><span class="dot" aria-hidden="true"></span> Windows desktop app · Free &amp; open source</p>
-      <h1>FlyGD Wingman</h1>
-      <p class="tagline">Your OBS recording wingman.</p>
-      <p class="lede"><b>FlyGD Wingman is a free Windows desktop application for people who record gameplay with OBS Studio.</b> It watches your OBS recording folder, lists the recordings it finds, and lets you review them, combine several into one video, and upload the ones you choose to your own YouTube channel.</p>
-      <p class="lede"><b>Why it asks for access to your YouTube account:</b> uploading a video to your channel requires your permission. Wingman requests a single Google permission — <code>youtube.upload</code> — and uses it for exactly one purpose: uploading the recordings you select, at the moment you press upload. It requests nothing else and reads nothing from your account. <a href="#youtube">Full detail on the Google permission →</a></p>
-      <p class="lede">Everything runs on your own PC. There is no FlyGD account to create and no FlyGD server involved — Wingman talks directly to Google.</p>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Wormhole multiboxing toolkit</p>
+      <h1>Fly more clients. Miss less.</h1>
+      <p class="lede">FlyGD Wingman previews every running EVE client so you can see all of them at once, fires wormhole mapping and rolling keybinds without leaving the client you're flying, watches gamelogs for trouble across the fleet, and uploads the fight footage you select to your own YouTube channel.</p>
 
       <div class="actions">
         <a class="btn btn-primary" href="https://github.com/elboaf/FlyGD-Wingman/releases/latest">
@@ -82,199 +79,187 @@
           View source on GitHub
         </a>
       </div>
-      <p class="actions-note">Windows 10 and 11, 64-bit. The installer is per-user and needs no administrator rights. Python and FFmpeg are bundled — nothing else to install. Wingman is set to start with Windows by default so it can watch for recordings; you can untick that during installation.</p>
 
-      <dl class="spec">
-        <div><dt>Runs on</dt><dd>Your Windows PC</dd></div>
-        <div><dt>Google permissions</dt><dd><code>youtube.upload</code> only</dd></div>
-        <div><dt>Backend server</dt><dd>None</dd></div>
-        <div><dt>Licence</dt><dd>MIT — source public</dd></div>
+      <dl class="readout-grid">
+        <div><dt>Platform</dt><dd>Windows 10/11</dd></div>
+        <div><dt>Licence</dt><dd>GPL-3.0-only</dd></div>
+        <div><dt>Backend</dt><dd>None, local-first</dd></div>
+        <div><dt>Release</dt><dd><a href="https://github.com/elboaf/FlyGD-Wingman/releases/latest">Latest on GitHub</a></dd></div>
       </dl>
     </div>
-  </div>
-</section>
-
-<section class="section" id="what">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">What it does</span>
-      <h2>A short trip from “stop recording” to “here’s the link”</h2>
-      <p>Wingman does one job and tries to do it without ceremony. Everything below is in the shipping application today — there are no coming-soon boxes on this page.</p>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="2.5"/></svg></span>
-        <h3>Watches your recording folder</h3>
-        <p>Wingman finds the recording folder from your OBS Studio configuration, or you can point it at one yourself. It waits until a file has finished being written before announcing it, so you never see a half-saved clip.</p>
-      </div>
-      <div class="card">
-        <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6h14M5 12h14M5 18h14"/><path d="M2.5 6h.01M2.5 12h.01M2.5 18h.01"/></svg></span>
-        <h3>Lists what you recorded</h3>
-        <p>A plain table of your recordings with checkboxes. New ones arrive pre-selected. Nothing is uploaded, moved or changed until you say so.</p>
-      </div>
-      <div class="card">
-        <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="8" height="10" rx="1.5"/><rect x="14" y="7" width="8" height="10" rx="1.5"/><path d="M10.5 12h3"/></svg></span>
-        <h3>Stitches clips together</h3>
-        <p>Select several recordings and Wingman joins them into a single video in chronological order, using the FFmpeg build shipped with the app. Your original files are left untouched.</p>
-      </div>
-      <div class="card">
-        <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></span>
-        <h3>Uploads to your channel</h3>
-        <p>Give a title and description, press upload, and the video goes to the YouTube channel you signed in with. When it finishes you get the video link back in the table, ready to copy.</p>
-      </div>
-      <div class="card">
-        <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6.5v5c0 4.4 3.2 8.2 8 9.5 4.8-1.3 8-5.1 8-9.5v-5Z"/><path d="M9.5 12.2l1.8 1.8 3.4-3.6"/></svg></span>
-        <h3>You choose who can see it</h3>
-        <p>Every upload carries a privacy setting you control — private, unlisted or public. Wingman ships defaulting to <b>unlisted</b>, and you can change it in Settings before you upload.</p>
-      </div>
-      <div class="card">
-        <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/><path d="M14 4v5h5"/><path d="M8 13h7M8 16.5h5"/></svg></span>
-        <h3>Bundles EVE combat logs</h3>
-        <p>If you play EVE Online, Wingman can gather the combat logs covering the fight you just recorded and post them to a Discord channel of your choosing. Entirely optional and off until you configure it.</p>
-      </div>
+    <div class="hero-media">
+      <img src="/media/wingman-previews.webp" width="1600" height="998" loading="eager" alt="Wingman Previews settings showing enabled EVE characters and client-switching controls">
     </div>
   </div>
 </section>
 
-<section class="section" id="workflow">
+<section class="section" id="toolkit">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">OBS recording workflow</span>
-      <h2>How a session actually goes</h2>
-      <p>Wingman never interrupts a recording and never touches OBS itself. It reads OBS's configuration to learn where recordings land, then stays out of the way.</p>
-    </div>
-    <ol class="steps">
-      <li><span class="step-n">01</span><div><b>Record in OBS as you normally would.</b><p>No plugin, no script to install into OBS, no changes to your scene collection. Wingman is a separate tray application watching the output folder.</p></div></li>
-      <li><span class="step-n">02</span><div><b>Wingman notices the finished file.</b><p>When the recording stops and the file has finished writing, you get a tray notification. If you would rather the window came to the front instead, that is a setting.</p></div></li>
-      <li><span class="step-n">03</span><div><b>Open the window and pick your clips.</b><p>Click the tray icon. Recent recordings are listed and the new ones are already ticked. Optionally stitch a selection into one video first.</p></div></li>
-      <li><span class="step-n">04</span><div><b>Upload the ones you chose.</b><p>Add a title and description, confirm the privacy setting, and upload. Wingman fills in the resulting YouTube link for each row so you can copy or open it.</p></div></li>
-    </ol>
-    <p class="note"><strong>Deleting is deliberate and permanent.</strong> Wingman has a “Delete Selected” button that erases the chosen files from your disk after a confirmation dialog. It does not use the Recycle Bin and it cannot be undone. Nothing else in the app ever deletes or modifies your recordings.</p>
-  </div>
-</section>
-
-<section class="section" id="youtube">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">YouTube uploads &amp; Google permissions</span>
-      <h2>Exactly what Wingman asks Google for</h2>
-      <p>Wingman uploads videos on your behalf, so it has to ask for a Google permission. It asks for the narrowest one that exists for the job, and nothing else.</p>
+      <span class="eyebrow">Primary workflows</span>
+      <h2>Three jobs, equally important</h2>
+      <p>Previews, Bookmarks, and Uploading aren't a main feature and two extras. Each does a distinct job and stays inside its own boundary.</p>
     </div>
 
-    <div class="panel">
-      <h3>The one scope Wingman requests</h3>
-      <code class="scope">https://www.googleapis.com/auth/youtube.upload</code>
-      <p>That is the complete list. There is no second scope and no profile scope. Wingman calls exactly one YouTube Data API method — <code>videos.insert</code> — and only when you press upload.</p>
-      <p>Google's consent screen labels this permission <b>“Manage your YouTube videos.”</b> That wording is Google's, and it is broader than what the permission actually grants: <code>youtube.upload</code> permits uploading new videos and nothing else. Editing or deleting existing videos requires a different scope, which Wingman does not request.</p>
-
-      <div class="two-col">
+    <div class="workflow-list">
+      <article class="workflow">
+        <span class="workflow-number" aria-hidden="true">01</span>
+        <div><p class="eyebrow">Previews</p><h2>Keep every client in view</h2></div>
         <div>
-          <h3>What the permission is used for</h3>
-          <ul class="ticks">
-            <li>Uploading the video files you selected to the YouTube channel you signed in with</li>
-            <li>Setting the title and description you typed</li>
-            <li>Setting the video category and the privacy status (private, unlisted or public) you chose</li>
-            <li>Returning the resulting video link to you</li>
+          <p>Wingman mirrors each running EVE client into a small always-on-top preview window, so you can watch every account without alt-tabbing between them.</p>
+          <ul class="compact-list">
+            <li>Switch which client is active with a click or a hotkey.</li>
+            <li>Set opacity, placement, and lock state per client.</li>
+            <li><b>Boundary:</b> Previews mirrors and activates EVE client windows. It never resizes or moves them.</li>
           </ul>
         </div>
+      </article>
+
+      <article class="workflow">
+        <span class="workflow-number" aria-hidden="true">02</span>
+        <div><p class="eyebrow">Bookmarks</p><h2>Wormhole mapping without leaving the keyboard</h2></div>
         <div>
-          <h3>What the permission does not allow</h3>
-          <ul class="crosses">
-            <li>Reading, editing or deleting videos already on your channel</li>
-            <li>Reading your subscriptions, playlists, watch history or comments</li>
-            <li>Reading your channel analytics or your Google profile</li>
-            <li>Touching Gmail, Google Drive, Contacts, Photos or Calendar</li>
+          <p>18 FlyGD keybinds place mapping bookmarks and drive rolling, so you never have to break formation to tag a hole.</p>
+          <ul class="compact-list">
+            <li>Bind mapping, rolling, and finisher actions to keys you choose.</li>
+            <li>Bindings apply per character and stay scoped to clients you've enabled.</li>
+            <li><b>Boundary:</b> every bookmark action runs from an explicit keypress in an enabled client. Nothing fires on its own.</li>
           </ul>
-          <p>These are limits Google enforces on the scope itself, not promises about our code. Separately, and by our own design, Wingman never uploads anything you did not explicitly select.</p>
+          <img src="/media/wingman-bookmarks.webp" width="1600" height="998" loading="lazy" alt="Wingman Bookmarks settings listing wormhole mapping keybinds and finisher bindings">
         </div>
-      </div>
-    </div>
+      </article>
 
-    <div class="panel">
-      <h3>Where your Google credentials go</h3>
-      <p>You sign in through Google's own consent screen, opened in your normal browser. The resulting access and refresh tokens are written to a file in your Windows user profile and used from there:</p>
-      <dl class="kv">
-        <div><dt>Token file</dt><dd><span class="path">%LOCALAPPDATA%\OBSYouTubeUploader\token.json</span></dd></div>
-        <div><dt>Stored as</dt><dd>Plain JSON. Wingman does <b>not</b> encrypt this file — treat it like a saved password.</dd></div>
-        <div><dt>Sent to FlyGD</dt><dd>Never. There is no FlyGD server, so there is nowhere for it to be sent.</dd></div>
-        <div><dt>Video data</dt><dd>Uploaded directly from your PC to Google's servers.</dd></div>
-      </dl>
-      <p>Wingman has no backend. Sign-in happens between your browser and Google; uploads happen between the application on your PC and Google's API. No FlyGD-operated service sits in between, receives your tokens, or sees your videos.</p>
-      <p><b>One nuance, stated plainly:</b> the Google Cloud project that identifies the application to Google belongs to the project maintainer, and its OAuth client ID and client secret are compiled into the released build. That is how desktop applications are normally distributed and it does not give the maintainer access to your account or your tokens. It does mean the whole user base shares one YouTube API quota — currently 100 uploads per day across everyone using the app.</p>
-      <p><a href="/privacy#revoking">How to revoke Wingman's access to your Google Account →</a></p>
+      <article class="workflow">
+        <span class="workflow-number" aria-hidden="true">03</span>
+        <div><p class="eyebrow">Uploading</p><h2>From recorded fight to shared link</h2></div>
+        <div>
+          <p>OBS or FightRecorder produces the file. You decide what happens to it next.</p>
+          <ul class="compact-list">
+            <li>Review, play, rename, or stitch together the recordings you choose.</li>
+            <li>Upload the ones you select to your own YouTube channel.</li>
+            <li><b>Boundary:</b> Wingman uploads only the recordings you select, and only after you start the upload.</li>
+          </ul>
+        </div>
+      </article>
     </div>
-
-    <p class="note"><strong>Google verification is still in progress.</strong> The application is published, so anyone can sign in — but until Google’s review completes, the consent screen shows a “Google hasn’t verified this app” warning. Choose <b>Advanced</b> and continue past it to proceed. The warning disappears once verification clears; nothing else about the sign-in changes.</p>
   </div>
 </section>
 
-<section class="section" id="eve">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">EVE Online combat logs</span>
-      <h2>Pair a fight recording with its logs</h2>
-      <p>An optional extra for EVE Online players. It is unrelated to YouTube and no Google data is involved anywhere in it.</p>
-    </div>
-    <div class="panel">
-      <p>EVE Online writes a text combat log for each play session. When you select one or more recordings and choose <b>Upload combat logs</b>, Wingman works out the time span those recordings cover, finds the logs overlapping that window (with a few minutes’ margin) in your EVE Gamelogs folder, puts the most recent of them in a single ZIP archive, and posts that archive to a Discord webhook you configured.</p>
-      <ul class="ticks">
-        <li>The Discord webhook is yours — you paste it in Settings, and no webhook means the feature simply does nothing</li>
-        <li>Only your combat logs are sent. Video files are never sent to Discord</li>
-        <li>The message accompanying the archive names the time window, the number of logs and the EVE character names read from them</li>
-        <li>Your original log files are only read — never moved, changed or deleted</li>
-        <li>Nothing from your Google Account or YouTube is involved in this feature at all</li>
+<section class="section" id="awareness">
+  <div class="wrap feature-split">
+    <div>
+      <span class="eyebrow">Client awareness</span>
+      <h2>See trouble before it lands on you</h2>
+      <p>Wingman watches your EVE gamelogs for combat starts, warp disruption, and decloaks, and keeps a fleet-wide combat bar so you don't have to tab through every client to know how a fight is going.</p>
+      <ul class="compact-list">
+        <li>Background clients stay quiet: sound suppression and filtering on unfocused clients cut down false interruptions.</li>
+        <li>The fleet combat bar reads each character's recent outgoing damage, incoming damage, and EWAR effects from local gamelog activity.</li>
+        <li>A character with no recent log activity shows as missing data, not as zero.</li>
+        <li><b>Boundary:</b> Wingman does not automate gameplay, and it never moves or resizes an EVE client window.</li>
       </ul>
-      <p class="note mb-0"><strong>Treat a webhook URL like a password.</strong> Anyone holding it can post to that Discord channel, and it is stored in plain text in Wingman's settings file. Wingman keeps it out of its own log file, but don't paste it anywhere public.</p>
     </div>
+    <dl class="readout-grid">
+      <div><dt>Alert</dt><dd>Combat start</dd></div>
+      <div><dt>Alert</dt><dd>Warp disruption</dd></div>
+      <div><dt>Alert</dt><dd>Decloak</dd></div>
+      <div><dt>Combat bar reads</dt><dd>DPS out / DPS in / EWAR</dd></div>
+    </dl>
   </div>
 </section>
 
-<section class="section" id="privacy-first">
+<section class="section" id="fleet-prep">
+  <div class="wrap feature-split">
+    <div>
+      <span class="eyebrow">Fleet preparation</span>
+      <h2>Prepare the fleet between fights</h2>
+      <p>Profiles, Skills, and Fittings are occasional preparation work, not something you touch mid-fight. One authorization in Settings → Characters covers both Skills and Fittings.</p>
+      <ul class="feature-list">
+        <li>
+          <h3>Profiles</h3>
+          <p>Back up your window layout, previews, and bookmark settings before a destructive change, and restore them in a couple of clicks.</p>
+        </li>
+        <li>
+          <h3>Skills</h3>
+          <p>Compares each character against the training plans and skill queues you maintain locally, so gaps in fleet readiness show up before you need them.</p>
+        </li>
+        <li>
+          <h3>Fittings</h3>
+          <p>Keeps a local, curated library of fits and copies the ones you choose into the game. Copies are additive: existing in-game fits are never overwritten or removed.</p>
+        </li>
+        <li>
+          <h3>Characters</h3>
+          <p>Settings → Characters authorizes each EVE character once through EVE SSO. Skills and Fittings both use that same authorization.</p>
+        </li>
+      </ul>
+    </div>
+    <img src="/media/wingman-fittings.webp" width="1600" height="998" loading="lazy" alt="Wingman Fittings library showing a collections sidebar and a curated list of ship fits">
+  </div>
+</section>
+
+<section class="section" id="fight-footage">
+  <div class="wrap feature-split">
+    <div>
+      <span class="eyebrow">Fight footage</span>
+      <h2>From recorded fight to shared link</h2>
+      <p>Fight footage is one of Wingman's three primary workflows, not the whole product. OBS or the optional FightRecorder plugin creates the recording; everything after that is under your control.</p>
+      <ol class="process-list">
+        <li>OBS, or the optional FightRecorder plugin, creates the recording.</li>
+        <li>Wingman notices the finished file in your recordings folder.</li>
+        <li>You review, play, rename, or stitch together the recordings you choose.</li>
+        <li>You upload only the footage you explicitly selected, to your own YouTube channel.</li>
+        <li>If a Discord webhook is configured, matching combat logs post automatically after a successful upload. A separate "Post the last hour" action is also available on demand.</li>
+      </ol>
+    </div>
+    <img src="/media/wingman-uploader.webp" width="1600" height="998" loading="lazy" alt="Wingman Uploader tab listing recorded fights alongside upload title and description fields">
+  </div>
+</section>
+
+<section class="section" id="trust">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Local-first by design</span>
-      <h2>There is no service behind this application</h2>
-      <p>Wingman is a desktop tool, not a hosted product. That is not a marketing position — there is genuinely no server to send anything to.</p>
+      <span class="eyebrow">Trust and data boundaries</span>
+      <h2>Where your data goes</h2>
+      <p>Wingman ships no analytics, no crash reporting, and no usage telemetry. Separate from that: it runs one automatic release check against GitHub on startup, and it reads local EVE gamelogs as part of the client-awareness features above. Neither sends usage data anywhere beyond the destinations below.</p>
     </div>
-    <div class="grid">
-      <div class="card"><h3>No account, no sign-up</h3><p>There is no FlyGD account to create. The only sign-in anywhere in the application is Google's — from Settings, or automatically the first time you upload.</p></div>
-      <div class="card"><h3>No analytics or telemetry</h3><p>The application contains no analytics, no crash reporting, no usage tracking and no update check. This website has none either — no cookies, no third-party scripts.</p></div>
-      <div class="card"><h3>Your files stay put</h3><p>Recordings, settings, logs and tokens all live on your PC. Video data leaves it only when you upload, and then only to Google.</p></div>
-      <div class="card"><h3>Only two places it ever connects</h3><p>Google, when you sign in or upload; and Discord, if you configured a webhook and pressed the combat-log button. Nothing else.</p></div>
+
+    <dl class="kv network-list">
+      <div><dt>Google / YouTube</dt><dd>Desktop OAuth sign-in, token refresh, and uploads of the recordings you select.</dd></div>
+      <div><dt>CCP</dt><dd>EVE SSO authorization and ESI reads, plus explicit fitting writes you initiate.</dd></div>
+      <div><dt>GitHub</dt><dd>One automatic Wingman release check on startup, plus explicit Wingman and FightRecorder release downloads or checks you request.</dd></div>
+      <div><dt>Discord</dt><dd>Posts to the webhook you configure. Nothing is sent if no webhook is set.</dd></div>
+      <div><dt>Microsoft</dt><dd>A WebView2 runtime download during installation, only if the runtime isn't already on your PC.</dd></div>
+      <div><dt>FlyGD</dt><dd>No backend. FlyGD never receives your credentials, videos, EVE data, or usage events.</dd></div>
+    </dl>
+
+    <div class="actions">
+      <a class="btn btn-ghost" href="/privacy">Privacy Policy</a>
+      <a class="btn btn-ghost" href="/terms">Terms of Service</a>
     </div>
   </div>
 </section>
 
-<section class="section" id="open-source">
+<section class="section" id="download">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Open source</span>
-      <h2>Read the code that handles your credentials</h2>
-      <p>Almost every claim on this page can be checked against the source, which is rather the point of publishing it. The one exception is the OAuth client credential itself: the repository holds a placeholder, and the real value is injected from a protected secret when a release is built.</p>
+      <h2>Download for Windows</h2>
+      <p>FlyGD Wingman is licensed <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-only</a> and developed in the open. Get the current Windows release from GitHub.</p>
     </div>
-    <div class="panel">
-      <p>FlyGD Wingman is released under the <b>MIT Licence</b> and developed in the open. The application is written in Python, packaged for Windows with PyInstaller, and distributed as a per-user installer built by a public GitHub Actions workflow.</p>
-      <p>The current installer file is still published under the project's original name, <code>OBS-YouTube-Uploader-Setup</code>; that changes with the next release.</p>
-      <div class="actions">
-        <a class="btn btn-ghost" href="https://github.com/elboaf/FlyGD-Wingman">Repository</a>
-        <a class="btn btn-ghost" href="https://github.com/elboaf/FlyGD-Wingman/releases">All releases</a>
-        <a class="btn btn-ghost" href="https://github.com/elboaf/FlyGD-Wingman/issues">Issues &amp; support</a>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="section" id="support">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Support</span>
-      <h2>Getting in touch</h2>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://github.com/elboaf/FlyGD-Wingman/releases/latest">Download for Windows</a>
+      <a class="btn btn-ghost" href="https://github.com/elboaf/FlyGD-Wingman">Repository</a>
+      <a class="btn btn-ghost" href="https://github.com/elboaf/FlyGD-Wingman/releases">All releases</a>
     </div>
-    <div class="panel">
-      <p>Bug reports, questions about privacy or the Google integration, and feature suggestions all go to the same place — the project's issue tracker:</p>
-      <p><a href="https://github.com/elboaf/FlyGD-Wingman/issues"><b>github.com/elboaf/FlyGD-Wingman/issues</b></a></p>
-      <p>This is a small, unfunded project maintained by volunteers in their own time. There is no support desk and no response-time guarantee, but issues are read.</p>
-    </div>
+
+    <ul class="compact-list mt-sm">
+      <li>The core installer runs per-user and does not need administrator rights.</li>
+      <li>Requires Microsoft WebView2. The installer can download and install it if your PC doesn't already have it.</li>
+      <li>The optional FightRecorder OBS plugin may prompt for one UAC elevation if you install it under Program Files.</li>
+      <li>Released builds aren't code-signed, so Windows shows a protection warning on first run. Download only from the project's official GitHub releases page.</li>
+    </ul>
+
+    <p>Public bug reports and feature requests go to <a href="https://github.com/elboaf/FlyGD-Wingman/issues">GitHub Issues</a>. For sensitive privacy, account, or security questions, contact <a href="mailto:technical@zoolanders.vip">technical@zoolanders.vip</a> directly.</p>
   </div>
 </section>
 
@@ -297,6 +282,7 @@
           <li><a href="/terms">Terms of Service</a></li>
           <li><a href="https://github.com/elboaf/FlyGD-Wingman">GitHub</a></li>
           <li><a href="https://github.com/elboaf/FlyGD-Wingman/issues">Support</a></li>
+          <li><a href="mailto:technical@zoolanders.vip">Contact</a></li>
         </ul>
       </nav>
     </div>
