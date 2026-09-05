@@ -112,10 +112,10 @@ Regenerate all four assets whenever the application's icon changes.
 
 ## Local development
 
-Requires **Node.js 22.22.0 or newer (or 24.8.0 or newer)**, the exact range
-`html-validate` 11.13.0 needs to run `npm run check:html`. This supersedes the
-lower Node 20.11 floor that `scripts/check-content.mjs` alone would need for
-`import.meta.dirname`.
+Requires **Node.js 22.22.x or Node.js 24.8.0 and newer**, matching the range
+`^22.22.0 || >=24.8.0` required by `html-validate` 11.13.0 for
+`npm run check:html`. This supersedes the lower Node 20.11 floor that
+`scripts/check-content.mjs` alone would need for `import.meta.dirname`.
 
 ```bash
 npm install     # installs wrangler and html-validate
