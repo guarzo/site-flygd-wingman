@@ -96,8 +96,10 @@ and tagline, checked at both full size and thumbnail size for legibility.
 
 ## Local development
 
-Requires **Node.js 20.11 or newer** (`scripts/check-content.mjs` uses
-`import.meta.dirname`, added in Node 20.11).
+Requires **Node.js 22.22.0 or newer (or 24.8.0 or newer)**, the exact range
+`html-validate` 11.13.0 needs to run `npm run check:html`. This supersedes the
+lower Node 20.11 floor that `scripts/check-content.mjs` alone would need for
+`import.meta.dirname`.
 
 ```bash
 npm install     # installs wrangler and html-validate
@@ -243,6 +245,13 @@ claim on this site has been verified against **v5.0.0**. In particular the
 site states that stored Google OAuth tokens and any Discord webhook URL are
 **not** encrypted, because they are not, while EVE refresh credentials are
 protected with Windows DPAPI, because they are.
+
+The application's current per-user data folder is
+`%LOCALAPPDATA%\FlyGD Wingman\`; see
+[wingman.zoolanders.vip/privacy#storage](https://wingman.zoolanders.vip/privacy#storage)
+for exactly what lives there and how credential protection differs by file.
+The current release installer follows the naming pattern
+`FlyGD-Wingman-Setup-<version>.exe`, for example `FlyGD-Wingman-Setup-5.0.0.exe`.
 
 Product claims are release-specific and go stale as the application changes.
 **Every release that changes data handling, network calls, requested scopes,
