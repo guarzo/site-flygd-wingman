@@ -1,7 +1,6 @@
 /* FlyGD Wingman — command deck identity.
    One stylesheet, no framework, no external fonts, no runtime JavaScript.
-   Shared by the homepage and by the legal/OAuth pages until later tasks
-   rewrite those pages' markup. */
+   Shared by the homepage, the legal pages and the OAuth page. */
 
 :root {
   color-scheme: dark;
@@ -38,6 +37,16 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: 76px;
 }
+
+/* The header is sticky, so an in-page anchor (the skip link, the homepage
+   nav, the legal tables of contents) has to clear it. Measured header
+   heights in Chrome: 65px while the nav fits one row, 96px once it wraps to
+   two, and 148px once it wraps to three — the homepage wraps to three below
+   450px and to two below 680px. These offsets clear the tallest header in
+   each range with margin, so a narrower system font stack only ever
+   over-clears. */
+@media (max-width: 800px) { html { scroll-padding-top: 108px; } }
+@media (max-width: 480px) { html { scroll-padding-top: 160px; } }
 
 body {
   margin: 0;
@@ -91,6 +100,14 @@ img { max-width: 100%; }
   border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
 }
 .feature-split { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,.9fr); gap: clamp(1.5rem, 4vw, 2.5rem); align-items: center; }
+
+/* The hero's asymmetric split needs room for both columns: the screenshot
+   holds a 420px floor, so below ~1000px the copy column collapses to an
+   unreadable measure (276px / 25.5ch at 840px). Linearize it earlier than
+   the other compositions, which tolerate the narrower split. */
+@media (max-width: 1000px) {
+  .hero-grid { grid-template-columns: 1fr; }
+}
 
 @media (max-width: 800px) {
   .hero-grid, .feature-split, .workflow { grid-template-columns: 1fr; }
@@ -274,7 +291,7 @@ img { max-width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition-duration: .01ms !important; }
+  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
 
 @media print {

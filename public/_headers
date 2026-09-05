@@ -10,6 +10,12 @@
 /og.png
   Cache-Control: public, max-age=86400
 
+# Screenshot filenames are stable rather than content-hashed, so a week of
+# caching is the longest safe window: no "immutable", because replacing a
+# screenshot reuses its name.
+/media/*
+  Cache-Control: public, max-age=604800
+
 /favicon.ico
   Cache-Control: public, max-age=86400
 
